@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>BioTalk | UMC</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+	<script src="js/checkFields.js"></script>
+	<script src="js/registerUser.js"></script>
+</head>
+
+<body class="background">
+
+	<div class="text-center">
+		<img src="../images/logo.png" class="rounded" ></img>
+	</div>
+	
+	<div class="align container">
+		<nav class="navbar bordasMenu fundoMenu">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="/"><font color="black">Home</font></a></li>
+					<li><a href="/"><font color="black">Plantas Medicinais</font></a></li>
+					<li><a href="/"><font color="black">Parques</font></a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	
+	
+	<div class="container">
+		<div class=" fundoTexto bordas">
+			<div class="alignTexto">
+				
+				<h3 style="margin-top: 0.75%">Cadastro de Usuario</h3>
+					
+				<form method="post" action="#" th:action="@{/registerUser}"
+					class="form" name="form" id="form">
+
+					<div class="form-group">
+						<div class="form-group col-md-12">
+							<label>Nome *</label> <label id="lblName"
+								style="color: red; font-size: smaller;"></label> <input
+								type="text" class="form-control" id="name"
+								placeholder="Nome" th:field="*{user.name}" required
+								oninput="checkName()"></input>
+						</div>
+					</div>
+
+					<div class="form-group">
+
+						<div class="form-group col-md-6">
+							<label>CPF *</label> <label id="lblCpf"
+								style="color: red; font-size: smaller;"></label><input
+								type="text" class="form-control" id="cpf" placeholder="CPF"
+								th:field="*{user.cpf}" required oninput="checkCpf()"></input>
+						</div>
+
+						<div class="form-group col-md-3">
+							<label>Data de Nascimento *</label> <label id="lblDate"
+								style="color: red; font-size: smaller;"></label> <input
+								type="date" class="form-control" id="inputDate"
+								placeholder="Data de Nascimento" th:field="*{user.dateBirth}"
+								required oninput="checkDate()"></input>
+						</div>
+
+						<div class="form-group col-md-3">
+							<label>Sexo</label> <label id="lblGender"
+								style="color: red; font-size: smaller;"></label> <select
+								id="gender" class="form-control" oninput="checkGender()"
+								th:field="*{user.gender}" required>
+								<option value="" selected>Escolha...</option>
+								<option value="feminino">Feminino</option>
+								<option value="masculino">Masculino</option>
+							</select>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<div class="form-group col-md-6">
+							<label>Email *</label> <label id="lblEmail"
+								style="color: red; font-size: smaller;"></label> <input
+								type="email" class="form-control" id="email"
+								placeholder="Email" th:field="*{login.email}" required
+								oninput="checkEmail()"></input>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label>Solicitar Permissão: *</label> <label id="lblProfile"
+								style="color: red; font-size: smaller;"></label> <select
+								id="authority" class="form-control"
+								th:field="*{authorities.idAuthority}" required oninput="checkAuthorities()">
+								<option value="" selected>Escolha...</option>
+								<option value="2">ESPECIALISTA</option>
+								<option value="3">COMUM</option>
+							</select>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+
+						<div class="form-group col-md-6">
+							<label>Senha *</label> <label id="lblPassword"
+								style="color: red; font-size: smaller;"></label> <input
+								type="password" class="form-control" id="password"
+								placeholder="Password" th:field="*{login.password}"
+								required oninput="checkPass()"></input>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label>Confirmar senha *</label> <label id="lblPasswordRepit"
+								style="color: red; font-size: smaller;"></label> <input
+								type="password" class="form-control" id="repitPassword"
+								placeholder="Password" required oninput="checkConfirmPass()"></input>
+						</div>
+
+					</div>
+
+					<div class="form-group col-md-12">
+						<h4>Formação Acadêmica</h4>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label>Grau acadêmico</label> <label id="lblAcademicDegree"
+								style="color: red; font-size: smaller;"></label> <select
+								id="academicDegree" class="form-control"
+								th:field="*{formation.academicDegree}">
+								<option value="" selected>Escolha...</option>
+								<option value="Tecnologo">Tecnologo</option>
+								<option value="Graduação">Graduação</option>
+								<option value="Bacharelado">Bacharelado</option>
+								<option value="Licenciatura">Licenciatura</option>
+								<option value="Pós-Graduação">Pós-Graduação</option>
+								<option value="Mestrado">Mestrado</option>
+								<option value="Doutorado">Doutorado</option>
+							</select>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label>Curso</label> <select id="course"
+								class="form-control" th:field="*{formation.course}">
+								<option value="" selected>Escolha...</option>
+								<option value="Biologia">Biologia</option>
+								<option value="Biomedicina">Biomedicina</option>
+								<option value="Biotecnologia">Biotecnologia</option>
+								<option value="Farmácia">Farmácia</option>
+								<option value="Genética">Genética</option>
+								<option value="Microbiologia/Imunologia">Microbiologia/Imunologia</option>
+							</select>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<div class="form-group col-md-6">
+							<label>Instituição</label> <select id="institution"
+								class="form-control" th:field="*{formation.institution}" oninput="checkInstitution()">
+								<option value="" selected>Escolha...</option>
+								<option value="UMC">UMC - Universidade de Mogi das Cruzes</option>
+								<option value="UNIP">UNIP - Universidade Paulista</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="form-group col-md-6">
+							<label for="inputText">Anexar diploma</label><label id="lblImage"
+								style="color: red; font-size: smaller;"> </label> <input
+								type="file" name="arquivo" id="inputImage" />
+						</div>
+					</div>
+
+					<div class="form-group" style="margin-left: 91%">
+						<button type="button" onClick="validateAndSubmitForm()"
+							class="btn btn-primary">Cadastrar</button>
+					</div>
+
+				</form>
+				
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

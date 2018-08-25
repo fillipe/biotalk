@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>BioTalk | UMC</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<body class="background">
+
+	<div class="text-center">
+		<img src="../images/logo.png" class="rounded"></img>
+	</div>
+
+	<!-- 	<div data-include="nav.html"></div> -->
+	<!-- 	<div id="carrega-menu" ></div> -->
+	<!-- 	<object type="text/html" data="nav.html"></object>  -->
+	<!-- 	<div ng-include="'nav.htm'"></div> -->
+
+	<div class="align container" style="z-index: 1;">
+		<nav class="navbar bordasMenu fundoMenu" style="z-index: 2;">
+			<div class="container-fluid" style="z-index: 3;">
+				<ul class="nav navbar-nav">
+					<li><a href="/"><font color="black">Home</font></a></li>
+					<li><a href="/"><font color="black">Plantas
+								Medicinais</font></a></li>
+					<li><a href="/"><font color="black">Parques</font></a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown" style="z-index: 4;"><a
+						class="dropdown-toggle" data-toggle="dropdown" href="#"> <b
+							th:inline="text" class="user">
+								[[${#httpServletRequest.remoteUser}]] </b> <i
+							class="fa fa-caret-down"></i>
+					</a>
+						<ul class="dropdown-menu" role="menu">
+							<li class="dropdown-submenu"><a tabindex="-1" href="#">Pendencias</a>
+								<ul class="dropdown-menu">
+									<li><a tabindex="-1" href="/pendingUsers">Usuários</a></li>
+									<li><a tabindex="-1" href="/pendingPlants">Plantas
+											Medicinais</a></li>
+									<li><a tabindex="-1" href="/pendingParks">Parques</a></li>
+								</ul></li>
+							<li><a href="#">Meu perfil</a></li>
+							<li><a href="#">Relatórios</a></li>
+							<!-- 							<li class="divider"></li> -->
+							<!-- 							<li><a href="#">Something else here</a></li> -->
+						</ul></li>
+
+					<li><form th:action="@{/app-logout}" method="POST">
+							<input type="submit" value="Logout" />
+						</form></li>
+				</ul>
+
+			</div>
+		</nav>
+	</div>
+
+	<div class="container">
+		<div class="fundoTexto bordas">
+			<div class="alignTexto">
+
+				<div class="form-group col-md-8">
+					<p style="font-size: 23px">Projeto BioTalk</p>
+				</div>
+				<form method="get" action="/search">
+					<div class="col-lg-4">
+						<div class="input-group">
+							<input type="text" th:name="value" class="form-control"
+								placeholder="Procurar por..." /> <span class="input-group-btn">
+								<button class="btn btn-default" type="submit">Buscar</button>
+							</span>
+						</div>
+					</div>
+				</form>
+
+				<hr style="width: 100%"></hr>
+
+				<div class="form-group col-md-12">
+					<h4>Quem somos?</h4>
+				</div>
+
+				<div class="form-row" style="margin-top: 2%">
+					<div class="form-group col-md-8">
+						<p class="text-sm-left">O projeto Biotalk é uma aplicação web
+							desenvolvida para incentivar o uso de plantas e ervas com
+							propriedades medicinais e propagar o conhecimento sobre a
+							fitoterapia.</p>
+						<p class="text-justify">Fitoterapia é a prevenção e o
+							tratamento de doenças mediante o uso de plantas (Ferreira,
+							1999).  Phyton, em grego, quer dizer “planta” e therapeia vem do
+							verbo therapeuo, que significa “tratar, cuidar”. Segundo a
+							Portaria 971, de 03/05/2006, do Ministério da Saúde, a
+							fitoterapia é uma terapêutica caracterizada pelo uso de plantas
+							medicinais em suas diferentes formas farmacêuticas, sem a
+							utilização de substâncias ativas isoladas, ainda que de origem
+							vegetal. A fitoterapia constitui uma forma de terapia medicinal
+							que vem crescendo notadamente desde o começo do século XXI
+							(Panizza 2010).</p>
+						<p class="text-justify">Historicamente o uso de plantas faz
+							parte da vida da humanidade. O homem, para ampliar seu
+							conhecimento, usou desde a sua pré-história, a intuição e
+							analogia, fazendo assim, um caminho sábio para descobrir a
+							utilidade de cada planta.</p>
+					</div>
+					<div class="form-group col-md-4">
+						<img src="../images/fitoterapiaHome.jpg"
+							class="rounded float-right" alt="..."
+							style="width: 100%; height: 100%" />
+						<div class="card-body">
+							<p class="card-text" style="font-size: 13px">Fitoterapia e o
+								uso das plantas com propriedades medicinais</p>
+						</div>
+					</div>
+
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<p class="text-sm-left">O uso das espécies vegetais com fins
+							de tratamento e cura de doenças e sintomas, aparece desde o
+							início da civilização, onde o homem despertou para um longo
+							percurso de manuseio dos recursos naturais em seu próprio
+							benefício (DI STASI, 1996).</p>
+						<p class="text-sm-left">No Brasil a temática foi levantada na
+							8ª Conferência de saúde em 1986 (Rosa, 2011; Silva, 2007).
+							Posteriormente, em consonância com as recomendações da OMS em
+							2006 foi publicada a Política Nacional de Práticas Integrativas e
+							Complementares (PNPIC), contemplando, entre outras, diretrizes e
+							10 responsabilidades institucionais para implantação/adequação de
+							ações e serviços de medicina tradicional chinesa e acupuntura,
+							homeopatia, plantas medicinais e Fitoterapia (Brasil, 2012;
+							Brasil, 2006a). Ainda em 2006, o Brasil recebeu a Política
+							Nacional de Plantas Medicinais e Fitoterápicos (PNPMF) (Brasil,
+							2006b). E em 2009, a Portaria Nº 2.960 aprovou o Programa
+							Nacional de Plantas Medicinais e Fitoterápicos, sendo os três
+							importantes para introdução do uso de plantas medicinais e
+							fitoterápicos no Sistema Único de Saúde (SUS) (MACEDO, 2016).</p>
+					</div>
+					<div class="form-group">
+						<p class="text-sm">Até agora, são 31 iniciativas de arranjo
+							produtivo local, 44 de assistência farmacêutica e três de
+							desenvolvimento e registro sanitário de medicamentos
+							fitoterápicos da Relação Nacional de Medicamentos (Rename) por
+							laboratórios oficiais públicos (Portal Brasil, 2016).</p>
+						<p>Todo medicamento, inclusive os fitoterápicos, deve ser
+							usado segundo orientação médica.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div>
+		<div class="container footer bordas">
+			<div class="faleConosco col-sm-4">
+				<strong>Fale conosco</strong> <br /> <strong>Bio-Talk
+					Project</strong><br /> <strong>Telefone:</strong> (11) 94193-3411 <br /> <strong>E-mail:</strong>
+				biotalkproject@gmail.com
+			</div>
+			<div class="col-sm-4">
+				<img src="../images/umc_logo.png" class="imagemSize"></img>
+			</div>
+			<div class="col-sm-4">
+				<h4 class="redesSociais">
+					<strong>Siga-nos</strong>
+				</h4>
+				<br></br> <a href="#" class="fa fa-facebook"></a> <a href="#"
+					class="fa fa-twitter"></a>
+			</div>
+		</div>
+	</div>
+	<br />
+</body>
+
+</html>

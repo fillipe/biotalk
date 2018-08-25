@@ -1,0 +1,246 @@
+.background{
+		/*background: url(skin/floresta.jpg);*/
+		background-image: url("../images/backgroundImage.jpg");
+}
+.fundoMenu{
+	background-color: white;
+	opacity: 0.8;
+}
+.fundoTexto{
+	background-color: white;
+	opacity: 0.8;
+}
+.align{
+	margin-top: 3%;
+}
+.alignTexto{
+	padding: 10px 10px 10px 10px;
+}
+.bordas {
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: 2px 2px 2px #B5B5B5;
+}
+.bordasMenu {
+	border-radius: 10px 10px 10px 10px;
+}
+.footer {
+  /*position: fixed;*/
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+.faleConosco{
+	text-align: left;
+}
+.auxilio{
+	text-align: center;
+}
+.redesSociais{
+	text-align: center;
+}
+.imagemSize{
+	width: 70px;
+	height: 70px;
+	margin: auto;
+	background: url("../images/faep-logo.png") center center no-repeat;
+}
+
+
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload{
+    width: 100%;
+}
+
+/* usosPlantasCadastro */
+
+span.multiselect-native-select {
+	position: relative
+}
+span.multiselect-native-select select {
+	border: 0!important;
+	clip: rect(0 0 0 0)!important;
+	height: 1px!important;
+	margin: -1px -1px -1px -3px!important;
+	overflow: hidden!important;
+	padding: 0!important;
+	position: absolute!important;
+	width: 1px!important;
+	left: 50%;
+	top: 30px
+}
+.multiselect-container {
+	position: absolute;
+	list-style-type: none;
+	margin: 0;
+	padding: 0
+}
+.multiselect-container .input-group {
+	margin: 5px
+}
+.multiselect-container>li {
+	padding: 0
+}
+.multiselect-container>li>a.multiselect-all label {
+	font-weight: 700
+}
+.multiselect-container>li.multiselect-group label {
+	margin: 0;
+	padding: 3px 20px 3px 20px;
+	height: 100%;
+	font-weight: 700
+}
+.multiselect-container>li.multiselect-group-clickable label {
+	cursor: pointer
+}
+.multiselect-container>li>a {
+	padding: 0
+}
+.multiselect-container>li>a>label {
+	margin: 0;
+	height: 100%;
+	cursor: pointer;
+	font-weight: 400;
+	padding: 3px 0 3px 30px
+}
+.multiselect-container>li>a>label.radio, .multiselect-container>li>a>label.checkbox {
+	margin: 0
+}
+.multiselect-container>li>a>label>input[type=checkbox] {
+	margin-bottom: 5px
+}
+.btn-group>.btn-group:nth-child(2)>.multiselect.btn {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px
+}
+.form-inline .multiselect-container label.checkbox, .form-inline .multiselect-container label.radio {
+	padding: 3px 20px 3px 40px
+}
+.form-inline .multiselect-container li a label.checkbox input[type=checkbox], .form-inline .multiselect-container li a label.radio input[type=radio] {
+	margin-left: -20px;
+	margin-right: 0
+}
+
+hr.style13 {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+.alignTop{
+	
+}
+
+$('.demo').fSelect();
+
+input:invalid { 
+    border: 2px solid red;
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block; 
+}
+
+/* Carousel */
+.carousel {
+	background: white;
+/* 	margin-top: 20px; */
+	width: 70%;
+	height: 30%;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.carousel .item {
+	min-height: 100%;
+	/* Prevent carousel from being distorted if for some reason image doesn't load */
+}
+
+.carousel .item img {
+	margin: 0 auto; /* Align slide image horizontally center */
+}
+
+.bs-example {
+	margin: 20px;
+}
+/* Carousel */
+
+/* Submenu */
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+/* Subemnu */
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>BioTalk | UMC</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+
+<body class="background">
+
+	<div class="text-center">
+		<img src="../images/logo.png" class="rounded" ></img>
+	</div>
+	
+	<div class="align container">
+		<nav class="navbar bordasMenu fundoMenu">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="/"><font color="black">Home</font></a></li>
+					<li><a href="/"><font color="black">Plantas Medicinais</font></a></li>
+					<li><a href="/"><font color="black">Parques</font></a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	
+	
+	<div class="container">
+		<div class=" fundoTexto bordas">
+			<div class="alignTexto">
+				
+				<h3 style="margin-top: 0.75%">Login</h3>
+				
+				<form method="POST" th:action="@{/login}">
+
+					<div class="form-group">
+						<label>Email </label> 
+						<input type="email" class="form-control" id="username" name="username"
+							aria-describedby="emailHelp" th:placeholder="'Entre com o seu email'"
+							required ></input>
+						 <small id="emailHelp" class="form-text text-muted">
+							We'll never share your email
+							with anyone else.</small>
+					</div>
+
+					<div class="form-group">
+						<label>Senha</label> 
+						<input type="password" id="password" name="password"
+							class="form-control" th:placeholder="Senha" required="required"/>
+					</div>
+
+					<div class="form-group">
+						<button type="button" class="btn btn-secondary">
+						<a href="/forgotPassword">Esqueci minha senha</a></button>
+						<button type="submit" class="btn btn-primary" th:text="Entrar"></button>
+					</div>
+
+					<div class="form-group">
+						<div>
+							Ainda não possui uma conta? <a href="/registerUser">Cadastre-se</a>
+						</div>
+					</div>
+
+					<div align="center" th:if="${param.error}">
+						<p style="font-size: 20; color: #FF1C19;">Login ou Senha
+							inválidos!</p>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
