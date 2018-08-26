@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<meta http-equiv="Content-Language" content="pt-br"></meta>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+
+<head>
+<title>BioTalk | UMC</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<body class="background">
+
+	<div class="text-center">
+		<img src="../images/logo.png" class="rounded" alt="..."></img>
+	</div>
+
+	<div class="align container ">
+		<nav class="navbar bordasMenu fundoMenu">
+			<div class="container-fluid ">
+				<ul class="nav navbar-nav">
+					<li><a href="/homepage"><font color="black">Home</font></a></li>
+					<li><a href="#"><font color="black">Plantas
+								Medicinais</font></a></li>
+					<li><a href="/parksHome"><font color="black">Parques</font></a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/registerUser"><span
+							class="glyphicon glyphicon-user"></span> Cadastre-se</a></li>
+					<li><a href="/login"><span
+							class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+	<div class="container">
+		<div class="fundoTexto bordas">
+			<div class="alignTexto">
+
+				<div class="form-group col-md-8">
+					<p style="font-size: 23px">Plantas Medicinais e Fitoterapia</p>
+				</div>
+				<form method="get" action="/search">
+					<div class="col-lg-4">
+						<div class="input-group">
+							<input type="text" th:name="value" class="form-control"
+								placeholder="Procurar por..." /> <span class="input-group-btn">
+								<button class="btn btn-default" type="submit">Buscar</button>
+							</span>
+						</div>
+					</div>
+				</form>
+
+				<hr style="width: 100%"></hr>
+
+				<div class="form-group col-md-12">
+					<h4>O que são plantas medicinais?</h4>
+				</div>
+
+				<div class="form-row" style="margin-top: 2%">
+					<div class="form-group col-md-8">
+						<p class="text-justify">Historicamente o uso de plantas faz
+							parte da vida da humanidade. O homem, para ampliar seu
+							conhecimento, usou desde a sua pré-história, a intuição e
+							analogia, fazendo assim, um caminho sábio para descobrir a
+							utilidade de cada planta.</p>
+						<p class="text-justify">As plantas medicinais são todas
+							aquelas que possuem princípios ativos que ajudam no tratamento
+							das doenças podendo levar até mesmo a sua cura. Elas são
+							utilizadas sob a forma de chás ou infusões que devem ser
+							ingeridos diariamente, enquanto durar o tratamento, mas é preciso
+							ter cuidado ao consumi-las, pois algumas delas podem ser tóxicas.</p>
+						</p>
+						<p class="text-justify">As plantas medicinais servem para
+							complementar o tratamento de diversas doenças mas não devem ser
+							utilizadas sem o conhecimento do médico pois podem ocasionar
+							alguma interação medicamentosa e interferir no processo de cura
+							da doença.</p>
+					</div>
+					<div class="form-group col-md-4">
+						<img src="../images/plantsHome.jpg" class="rounded float-right"
+							alt="..." style="width: 100%; height: 100%" />
+						<div class="card-body">
+							<p class="card-text" style="font-size: 13px">Fitoterapia e o
+								uso das plantas com propriedades medicinais</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group col-md-12">
+					<h4>O que é fitoterapia?</h4>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<p class="text-justify">Fitoterapia é a prevenção e o
+							tratamento de doenças mediante o uso de plantas (Ferreira,
+							1999).  Phyton, em grego, quer dizer “planta” e therapeia vem do
+							verbo therapeuo, que significa “tratar, cuidar”. Segundo a
+							Portaria 971, de 03/05/2006, do Ministério da Saúde, a
+							fitoterapia é uma terapêutica caracterizada pelo uso de plantas
+							medicinais em suas diferentes formas farmacêuticas, sem a
+							utilização de substâncias ativas isoladas, ainda que de origem
+							vegetal. A fitoterapia constitui uma forma de terapia medicinal
+							que vem crescendo notadamente desde o começo do século XXI
+							(Panizza 2010).</p>
+							<p class="text-sm">Até agora, são 31 iniciativas de arranjo
+							produtivo local, 44 de assistência farmacêutica e três de
+							desenvolvimento e registro sanitário de medicamentos
+							fitoterápicos da Relação Nacional de Medicamentos (Rename) por
+							laboratórios oficiais públicos (Portal Brasil, 2016).</p>
+					</div>
+					<div class="form-group">
+						<p>Todo medicamento, inclusive os fitoterápicos, deve ser
+							usado segundo orientação médica.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br></br>
+	</div>
+
+	<div>
+		<div class="container footer bordas">
+			<div class="faleConosco col-sm-4">
+				<strong>Fale conosco</strong> <br></br> <strong>Bio-Talk
+					Project</strong><br></br> <strong>Telefone:</strong> (11) 94193-3411 <br></br>
+				<strong>E-mail: biotalkproject@gmail.com</strong>
+			</div>
+			<div class="col-sm-4">
+				<img src="../images/faep-logo.png" class="imagemSize"></img> <img
+					src="../images/umc_logo.png" class="imagemSize"></img>
+			</div>
+			<div class="col-sm-4">
+				<h4 class="redesSociais">
+					<strong>Siga-nos</strong>
+				</h4>
+				<br></br> <a href="#" class="fa fa-facebook"></a> <a href="#"
+					class="fa fa-twitter"></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

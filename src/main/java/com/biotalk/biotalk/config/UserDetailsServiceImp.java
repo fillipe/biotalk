@@ -26,7 +26,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
 		
 		if (login != null) {
 		      builder = org.springframework.security.core.userdetails.User.withUsername(email);
-		      builder.password(new BCryptPasswordEncoder().encode(login.getPassword()));
+		      builder.password(login.getPassword());
 		      builder.roles(login.getAuth().getAuthority());
 		    } else {
 		      throw new UsernameNotFoundException("Usuário não encontrado");
@@ -34,5 +34,11 @@ public class UserDetailsServiceImp implements UserDetailsService {
 		
 		return builder.build();
 	}
+	
+//	public static void main(String[] args) {
+//		String str = "12345678";
+//		System.out.println(new BCryptPasswordEncoder().encode(str));
+//		
+//	}
 
 }

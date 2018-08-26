@@ -2,42 +2,50 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>BioTalk | UMC</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-	<script src="js/checkFields.js"></script>
-	<script src="js/registerUser.js"></script>
+<title>BioTalk | UMC</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<script src="js/checkFields.js"></script>
+<script src="js/registerUser.js"></script>
 </head>
 
 <body class="background">
 
 	<div class="text-center">
-		<img src="../images/logo.png" class="rounded" ></img>
+		<img src="../images/logo.png" class="rounded"></img>
 	</div>
-	
+
 	<div class="align container">
 		<nav class="navbar bordasMenu fundoMenu">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="/"><font color="black">Home</font></a></li>
-					<li><a href="/"><font color="black">Plantas Medicinais</font></a></li>
+					<li><a href="/homepage"><font color="black">Home</font></a></li>
+					<li><a href="/"><font color="black">Plantas
+								Medicinais</font></a></li>
 					<li><a href="/"><font color="black">Parques</font></a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/login"><span
+							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</ul>
 			</div>
 		</nav>
 	</div>
-	
-	
+
+
 	<div class="container">
 		<div class=" fundoTexto bordas">
 			<div class="alignTexto">
-				
+
 				<h3 style="margin-top: 0.75%">Cadastro de Usuario</h3>
-					
+
 				<form method="post" action="#" th:action="@{/registerUser}"
 					class="form" name="form" id="form">
 
@@ -45,9 +53,8 @@
 						<div class="form-group col-md-12">
 							<label>Nome *</label> <label id="lblName"
 								style="color: red; font-size: smaller;"></label> <input
-								type="text" class="form-control" id="name"
-								placeholder="Nome" th:field="*{user.name}" required
-								oninput="checkName()"></input>
+								type="text" class="form-control" id="name" placeholder="Nome"
+								th:field="*{user.name}" required oninput="checkName()"></input>
 						</div>
 					</div>
 
@@ -85,16 +92,16 @@
 						<div class="form-group col-md-6">
 							<label>Email *</label> <label id="lblEmail"
 								style="color: red; font-size: smaller;"></label> <input
-								type="email" class="form-control" id="email"
-								placeholder="Email" th:field="*{login.email}" required
-								oninput="checkEmail()"></input>
+								type="email" class="form-control" id="email" placeholder="Email"
+								th:field="*{login.email}" required oninput="checkEmail()"></input>
 						</div>
 
 						<div class="form-group col-md-6">
 							<label>Solicitar Permissão: *</label> <label id="lblProfile"
 								style="color: red; font-size: smaller;"></label> <select
 								id="authority" class="form-control"
-								th:field="*{authorities.idAuthority}" required oninput="checkAuthorities()">
+								th:field="*{authorities.idAuthority}" required
+								oninput="checkAuthorities()">
 								<option value="" selected>Escolha...</option>
 								<option value="2">ESPECIALISTA</option>
 								<option value="3">COMUM</option>
@@ -109,8 +116,8 @@
 							<label>Senha *</label> <label id="lblPassword"
 								style="color: red; font-size: smaller;"></label> <input
 								type="password" class="form-control" id="password"
-								placeholder="Password" th:field="*{login.password}"
-								required oninput="checkPass()"></input>
+								placeholder="Password" th:field="*{login.password}" required
+								oninput="checkPass()"></input>
 						</div>
 
 						<div class="form-group col-md-6">
@@ -144,8 +151,8 @@
 						</div>
 
 						<div class="form-group col-md-6">
-							<label>Curso</label> <select id="course"
-								class="form-control" th:field="*{formation.course}">
+							<label>Curso</label> <select id="course" class="form-control"
+								th:field="*{formation.course}">
 								<option value="" selected>Escolha...</option>
 								<option value="Biologia">Biologia</option>
 								<option value="Biomedicina">Biomedicina</option>
@@ -161,9 +168,11 @@
 					<div class="form-group">
 						<div class="form-group col-md-6">
 							<label>Instituição</label> <select id="institution"
-								class="form-control" th:field="*{formation.institution}" oninput="checkInstitution()">
+								class="form-control" th:field="*{formation.institution}"
+								oninput="checkInstitution()">
 								<option value="" selected>Escolha...</option>
-								<option value="UMC">UMC - Universidade de Mogi das Cruzes</option>
+								<option value="UMC">UMC - Universidade de Mogi das
+									Cruzes</option>
 								<option value="UNIP">UNIP - Universidade Paulista</option>
 							</select>
 						</div>
@@ -183,10 +192,32 @@
 					</div>
 
 				</form>
-				
+
 			</div>
 		</div>
 	</div>
+
+	<br />
+	<div>
+		<div class="container footer bordas">
+			<div class="faleConosco col-sm-4">
+				<strong>Fale conosco</strong> <br /> <strong>Bio-Talk
+					Project</strong><br /> <strong>Telefone:</strong> (11) 94193-3411 <br /> <strong>E-mail:</strong>
+				biotalkproject@gmail.com
+			</div>
+			<div class="col-sm-4">
+				<img src="../images/umc_logo.png" class="imagemSize"></img>
+			</div>
+			<div class="col-sm-4">
+				<h4 class="redesSociais">
+					<strong>Siga-nos</strong>
+				</h4>
+				<br></br> <a href="#" class="fa fa-facebook"></a> <a href="#"
+					class="fa fa-twitter"></a>
+			</div>
+		</div>
+	</div>
+	<br />
 
 </body>
 

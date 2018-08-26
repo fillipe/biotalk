@@ -2,61 +2,64 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>BioTalk | UMC</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+<title>BioTalk | UMC</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 
 <body class="background">
 
 	<div class="text-center">
-		<img src="../images/logo.png" class="rounded" ></img>
+		<img src="../images/logo.png" class="rounded"></img>
 	</div>
-	
+
 	<div class="align container">
 		<nav class="navbar bordasMenu fundoMenu">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="/"><font color="black">Home</font></a></li>
-					<li><a href="/"><font color="black">Plantas Medicinais</font></a></li>
-					<li><a href="/"><font color="black">Parques</font></a></li>
+					<li><a href="/homepage"><font color="black">Home</font></a></li>
+					<li><a href="/plantsHome"><font color="black">Plantas
+								Medicinais</font></a></li>
+					<li><a href="/parksHome"><font color="black">Parques</font></a></li>
 				</ul>
 			</div>
 		</nav>
 	</div>
-	
-	
+
+
 	<div class="container">
 		<div class=" fundoTexto bordas">
 			<div class="alignTexto">
-				
+
 				<h3 style="margin-top: 0.75%">Login</h3>
-				
+
 				<form method="POST" th:action="@{/login}">
 
 					<div class="form-group">
-						<label>Email </label> 
-						<input type="email" class="form-control" id="username" name="username"
-							aria-describedby="emailHelp" th:placeholder="'Entre com o seu email'"
-							required ></input>
-						 <small id="emailHelp" class="form-text text-muted">
-							We'll never share your email
-							with anyone else.</small>
+						<label>Email </label> <input type="email" class="form-control"
+							id="username" name="username" aria-describedby="emailHelp"
+							th:placeholder="'Entre com o seu email'" required></input> <small
+							id="emailHelp" class="form-text text-muted"> We'll never
+							share your email with anyone else.</small>
 					</div>
 
 					<div class="form-group">
-						<label>Senha</label> 
-						<input type="password" id="password" name="password"
-							class="form-control" th:placeholder="Senha" required="required"/>
+						<label>Senha</label> <input type="password" id="password"
+							name="password" class="form-control" th:placeholder="Senha"
+							required="required" />
 					</div>
 
 					<div class="form-group">
 						<button type="button" class="btn btn-secondary">
-						<a href="/forgotPassword">Esqueci minha senha</a></button>
+							<a href="/forgotPassword">Esqueci minha senha</a>
+						</button>
 						<button type="submit" class="btn btn-primary" th:text="Entrar"></button>
 					</div>
 
@@ -75,7 +78,27 @@
 			</div>
 		</div>
 	</div>
-
+	<br />
+	<div>
+		<div class="container footer bordas">
+			<div class="faleConosco col-sm-4">
+				<strong>Fale conosco</strong> <br /> <strong>Bio-Talk
+					Project</strong><br /> <strong>Telefone:</strong> (11) 94193-3411 <br /> <strong>E-mail:</strong>
+				biotalkproject@gmail.com
+			</div>
+			<div class="col-sm-4">
+				<img src="../images/umc_logo.png" class="imagemSize"></img>
+			</div>
+			<div class="col-sm-4">
+				<h4 class="redesSociais">
+					<strong>Siga-nos</strong>
+				</h4>
+				<br></br> <a href="#" class="fa fa-facebook"></a> <a href="#"
+					class="fa fa-twitter"></a>
+			</div>
+		</div>
+	</div>
+	<br />
 </body>
 
 </html>
