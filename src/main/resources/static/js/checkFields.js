@@ -1,3 +1,23 @@
+function validateAndSubmitForm() {
+
+	if (checkName() && checkCpf() && checkDate() && checkGender()
+			&& checkEmail() && checkAuthorities() && checkPass()
+			&& checkConfirmPass() && checkInstitution()) {
+
+		$.ajax({
+			url : window.origin + '/api/user/verifyByCpf/' + $('#cpf').val()
+		}).then(
+				function(ifExists) {
+					if (ifExists) {
+						window.location.href = window.origin
+								+ '/registerUser?error=true';
+					} else {
+						document.getElementById("form").submit();
+					}
+				});
+	}
+}
+
 function checkName() {
 	var reTipo = /[A-z][ ][A-z]/;
 	name = document.form.name.value;
