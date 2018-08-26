@@ -3,6 +3,7 @@ package com.biotalk.biotalk.controller;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,6 +63,7 @@ public class RegisterUserController {
 			}
 			
 			login.setAuth(auth);
+			login.setPassword(new BCryptPasswordEncoder().encode(login.getPassword()));
 			user.setLogin(login);
 			user.setFormation(formation);
 			user.setDtCreation(new Date());
@@ -73,7 +75,7 @@ public class RegisterUserController {
 			System.out.println("Erro ao cadastrar usuário - " + e);
 		}
 
-		return "redirect:/login";
+		return "redirect:/registerUser?success=true";
 
 	}
 

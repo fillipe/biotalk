@@ -46,6 +46,14 @@
 
 				<h3 style="margin-top: 0.75%">Cadastro de Usuario</h3>
 
+				<div align="center" th:if="${param.error}">
+					<p style="font-size: 20; color: #FF1C19;">Usuário já possui cadastro!</p>
+				</div>
+				
+				<div align="center" th:if="${param.success}">
+					<p style="font-size: 20; color: #006400;">Usuário cadastrado com sucesso!</p>
+				</div>
+
 				<form method="post" action="#" th:action="@{/registerUser}"
 					class="form" name="form" id="form">
 

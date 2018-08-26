@@ -6,9 +6,9 @@ function validateAndSubmitForm() {
 							+ $('#cpf').val()
 				}).then(function(ifExists) {
 			if (ifExists) {
-				alert("Usuário já cadastrado!");
+				window.location.href = window.origin + '/registerUser?error=true';
+//				alert("Usuário já cadastrado!");
 			} else {
-				alert("Usuário cadastrado com sucesso!");
 				document.getElementById("form").submit();
 			}
 		});
