@@ -7,7 +7,6 @@ function validateAndSubmitForm() {
 				}).then(function(ifExists) {
 			if (ifExists) {
 				window.location.href = window.origin + '/registerUser?error=true';
-//				alert("Usuário já cadastrado!");
 			} else {
 				document.getElementById("form").submit();
 			}

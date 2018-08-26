@@ -67,6 +67,28 @@ function checkCpf() {
 
 function checkDate() {
 
+	var date = new Date($("#date").val());
+
+	// date = document.form.date.value;
+
+	var Cnow = new Date();// current Date
+	years = Cnow.getFullYear() - date.getFullYear();
+
+	if (document.form.date.value.trim != "") {
+		if (years > 98 || years < 12) {
+			$('#lblDate').text("Data inválida!");
+			$('#date').css("border", "1px solid #F00");
+			return false;
+		}
+	} else {
+		$('#lblDate').text("Campo obrigatório!");
+		$('#date').css("border", "1px solid #F00");
+		return false;
+	}
+	$('#lblDate').text("");
+	$('#date').css("border", "1px solid #228B22");
+	return true;
+
 }
 
 function checkGender() {
