@@ -1,8 +1,11 @@
 package com.biotalk.biotalk.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.biotalk.biotalk.enums.Status;
 import com.biotalk.biotalk.model.User;
 import com.biotalk.biotalk.repository.UserRepository;
 
@@ -21,6 +24,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findUserByCpf(String cpf) {
 		return userRepository.findByCpf(cpf);
+	}
+
+	@Override
+	public List<User> findUserByStatus(Status status) {
+		return userRepository.findByStatus(status);
 	}
 
 }

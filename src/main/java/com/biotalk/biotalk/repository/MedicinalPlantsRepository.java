@@ -7,13 +7,11 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.biotalk.biotalk.enums.Status;
-import com.biotalk.biotalk.model.User;
+import com.biotalk.biotalk.model.MedicinalPlants;
 
-@Repository("userRepository")
-public interface UserRepository extends JpaRepository<User, Long>, CrudRepository<User, Long> {
+@Repository("medicinalPlantsRepository")
+public interface MedicinalPlantsRepository extends JpaRepository<MedicinalPlants, Long>, CrudRepository<MedicinalPlants, Long> {
 	
-	User findByCpf(String cpf);
-	
-	List<User> findByStatus(Status status);
+	List<MedicinalPlants> findByStatus(Status status);
 
 }

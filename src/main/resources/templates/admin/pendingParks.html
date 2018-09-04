@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+<title>BioTalk | UMC</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<body class="background">
+
+	<div class="text-center">
+		<img src="../images/logo.png" class="rounded"></img>
+	</div>
+
+	<div class="align container" style="z-index: 1;">
+		<nav class="navbar bordasMenu fundoMenu" style="z-index: 2;">
+			<div class="container-fluid" style="z-index: 3;">
+				<ul class="nav navbar-nav">
+					<li><a href="auth/homepage"><font color="black">Home</font></a></li>
+					<li><a href="auth/plantsHome"><font color="black">Plantas
+								Medicinais</font></a></li>
+					<li><a href="auth/parksHome"><font color="black">Parques</font></a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown" style="z-index: 4;"><a
+						class="dropdown-toggle" data-toggle="dropdown" href="#"> <b
+							th:inline="text" class="user"> Olá,
+								[[${#httpServletRequest.remoteUser}]] </b> <i
+							class="fa fa-caret-down"></i>
+
+					</a>
+						<ul class="dropdown-menu" role="menu">
+							<li class="dropdown-submenu"><a tabindex="-1" href="#">Pendencias</a>
+								<ul class="dropdown-menu">
+									<li><a tabindex="-1" href="/pendingUsers">Usuários</a></li>
+									<li><a tabindex="-1" href="/pendingPlants">Plantas
+											Medicinais</a></li>
+									<li><a tabindex="-1" href="/pendingParks">Parques</a></li>
+								</ul></li>
+							<li><a href="#">Meu perfil</a></li>
+							<li><a href="#">Relatórios</a></li>
+							<li class="divider"></li>
+							<li><form th:action="@{/app-logout}" method="POST">
+									<input class="btn btn-link" type="submit" value="Sair"
+										style="margin-left: 6%" />
+								</form></li>
+						</ul></li>
+				</ul>
+
+			</div>
+		</nav>
+	</div>
+
+	<div class="container" style="z-index: 1;">
+		<div class="fundoTexto bordas">
+			<div class="alignTexto">
+
+				<div class="form-group col-md-8">
+					<p style="font-size: 23px">Plantas Medicinais Pendentes</p>
+				</div>
+				<form method="get" action="/searchAdmin">
+					<div class="col-lg-4">
+						<div class="input-group">
+							<input type="text" th:name="value" class="form-control"
+								placeholder="Procurar por..." /> <span class="input-group-btn">
+								<button class="btn btn-default" type="submit">Buscar</button>
+							</span>
+						</div>
+					</div>
+				</form>
+
+				<hr style="width: 100%"></hr>
+
+				<table class="table">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">nome do parque</th>
+							<th scope="col">#</th>
+							<th scope="col">#</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="parks : ${parksList}">
+							<td><span class="txtReturn" th:text="${parks.parksId}"></span></td>
+							<td><span class="txtReturn" th:text="${parks.parksName}"></span></td>
+							<td><span class="txtReturn">x</span></td>
+							<td><span class="txtReturn">autor</span></td>
+							<!-- 								<td><a th:href="#">view</a></td> -->
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<br></br>
+		</div>
+	</div>
+	<br />
+	<div>
+		<div class="container footer bordas">
+			<div class="faleConosco col-sm-4">
+				<strong>Fale conosco</strong> <br /> <strong>Bio-Talk
+					Project</strong><br /> <strong>Telefone:</strong> (11) 94193-3411 <br /> <strong>E-mail:</strong>
+				biotalkproject@gmail.com
+			</div>
+			<div class="col-sm-4">
+				<img src="../images/umc_logo.png" class="imagemSize"></img>
+			</div>
+			<div class="col-sm-4">
+				<h4 class="redesSociais">
+					<strong>Siga-nos</strong>
+				</h4>
+				<br></br> <a href="#" class="fa fa-facebook"></a> <a href="#"
+					class="fa fa-twitter"></a>
+			</div>
+		</div>
+	</div>
+	<br />
+</body>
+
+</html>

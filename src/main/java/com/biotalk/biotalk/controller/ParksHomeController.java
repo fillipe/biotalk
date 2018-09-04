@@ -11,4 +11,9 @@ public class ParksHomeController {
 		return "anonymous/parksHome";
 	}
 	
+	@GetMapping("auth/parksHome")
+	public String returnPlantHomeAuth() {
+		return "auth/parksHome";
+	}
+	
 }

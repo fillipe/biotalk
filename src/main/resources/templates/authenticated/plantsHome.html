@@ -28,17 +28,36 @@
 		<nav class="navbar bordasMenu fundoMenu">
 			<div class="container-fluid ">
 				<ul class="nav navbar-nav">
-					<li><a href="/homepage"><font color="black">Home</font></a></li>
+					<li><a href="/auth/homepage"><font color="black">Home</font></a></li>
 					<li><a href="#"><font color="black">Plantas
 								Medicinais</font></a></li>
-					<li><a href="/parksHome"><font color="black">Parques</font></a></li>
+					<li><a href="/auth/parksHome"><font color="black">Parques</font></a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/registerUser"><span
-							class="glyphicon glyphicon-user"></span> Cadastre-se</a></li>
-					<li><a href="/login"><span
-							class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					<li class="dropdown" style="z-index: 4;"><a
+						class="dropdown-toggle" data-toggle="dropdown" href="#"> <b
+							th:inline="text" class="user"> Olá,
+								[[${#httpServletRequest.remoteUser}]] </b> <i
+							class="fa fa-caret-down"></i>
+
+					</a>
+						<ul class="dropdown-menu" role="menu">
+							<li class="dropdown-submenu"><a tabindex="-1" href="#">Pendencias</a>
+								<ul class="dropdown-menu">
+									<li><a tabindex="-1" href="/pendingUsers">Usuários</a></li>
+									<li><a tabindex="-1" href="/pendingPlants">Plantas
+											Medicinais</a></li>
+									<li><a tabindex="-1" href="/pendingParks">Parques</a></li>
+								</ul></li>
+							<li><a href="#">Meu perfil</a></li>
+							<li><a href="#">Relatórios</a></li>
+							<li class="divider"></li>
+							<li><form th:action="@{/app-logout}" method="POST">
+									<input class="btn btn-link" type="submit" value="Sair"
+										style="margin-left: 6%" />
+								</form></li>
+						</ul></li>
 				</ul>
 			</div>
 		</nav>
