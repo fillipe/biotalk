@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<!doctype html>
+<html>
+<meta http-equiv="Content-Language" content="pt-br"></meta>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
 
 <head>
 <title>BioTalk | UMC</title>
@@ -23,21 +24,40 @@
 		<img src="../images/logo.png" class="rounded" alt="..."></img>
 	</div>
 
-	<div class="align container ">
-		<nav class="navbar bordasMenu fundoMenu">
-			<div class="container-fluid ">
+	<div class="align container" style="z-index: 1;">
+		<nav class="navbar bordasMenu fundoMenu" style="z-index: 2;">
+			<div class="container-fluid" style="z-index: 3;">
 				<ul class="nav navbar-nav">
-					<li><a href="/anonymous/homepage"><font color="black">Home</font></a></li>
+					<li><a href="/admin/homepage"><font color="black">Home</font></a></li>
 					<li><a href="#"><font color="black">Plantas
 								Medicinais</font></a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/anonymous/registerUser"><span
-							class="glyphicon glyphicon-user"></span> Cadastre-se</a></li>
-					<li><a href="/anonymous/login"><span
-							class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					<li class="dropdown" style="z-index: 4;"><a
+						class="dropdown-toggle" data-toggle="dropdown" href="#"> <b
+							th:inline="text" class="user"> Olá,
+								[[${#httpServletRequest.remoteUser}]] </b> <i
+							class="fa fa-caret-down"></i>
+
+					</a>
+						<ul class="dropdown-menu" role="menu">
+							<li class="dropdown-submenu"><a tabindex="-1" href="#">Pendencias</a>
+								<ul class="dropdown-menu">
+									<li><a tabindex="-1" href="/admin/pendingUsers">Usuários</a></li>
+									<li><a tabindex="-1" href="/admin/pendingPlants">Plantas
+											Medicinais</a></li>
+								</ul></li>
+							<li><a href="#">Meu perfil</a></li>
+							<li><a href="#">Relatórios</a></li>
+							<li class="divider"></li>
+							<li><form th:action="@{/app-logout}" method="POST">
+									<input class="btn btn-link" type="submit" value="Sair"
+										style="margin-left: 6%" />
+								</form></li>
+						</ul></li>
 				</ul>
+
 			</div>
 		</nav>
 	</div>

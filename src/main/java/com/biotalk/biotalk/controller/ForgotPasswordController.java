@@ -10,7 +10,7 @@ import com.biotalk.biotalk.model.Login;
 import com.biotalk.biotalk.model.User;
 
 @Controller
-@RequestMapping(value = "/forgotPassword")
+@RequestMapping(value = "/anonymous/forgotPassword")
 @SessionAttributes("email")
 public class ForgotPasswordController {
 	

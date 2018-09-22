@@ -16,8 +16,19 @@ public class MedicinalPlantsServiceImpl implements MedicinalPlantsService {
 	private MedicinalPlantsRepository plantsRepository;
 
 	@Override
+	public void saveMedicinalPlants(MedicinalPlants medicinalPlants) {
+		plantsRepository.save(medicinalPlants);
+	}
+
+	@Override
 	public List<MedicinalPlants> findMedicinalPlantsByStatus(Status status) {
 		return plantsRepository.findByStatus(status);
+	}
+	
+	@Override
+	public List<MedicinalPlants> findMedicinalPlantsOrIndication(String value) {
+		String valueContaining = "%" + value + "%";
+		return plantsRepository.findByMedicinalPlantsOrIndication(valueContaining);
 	}
 
 }

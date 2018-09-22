@@ -17,40 +17,36 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
+
 <body class="background">
 
 	<div class="text-center">
 		<img src="../images/logo.png" class="rounded" alt="..."></img>
 	</div>
 
-	<div class="align container ">
-		<nav class="navbar bordasMenu fundoMenu">
-			<div class="container-fluid ">
+	<div class="align container" style="z-index: 1;">
+		<nav class="navbar bordasMenu fundoMenu" style="z-index: 2;">
+			<div class="container-fluid" style="z-index: 3;">
 				<ul class="nav navbar-nav">
-					<li><a href="/auth/homepage"><font color="black">Home</font></a></li>
-					<li><a href="/auth/plantsHome"><font color="black">Plantas
+					<li><a href="/espec/homepage"><font color="black">Home</font></a></li>
+					<li><a href="#"><font color="black">Plantas
 								Medicinais</font></a></li>
-					<li><a href="#"><font color="black">Parques</font></a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown" style="z-index: 4;"><a
 						class="dropdown-toggle" data-toggle="dropdown" href="#"> <b
-							th:inline="text" class="user">
-								Olá, [[${#httpServletRequest.remoteUser}]] </b> <i
+							th:inline="text" class="user"> Olá,
+								[[${#httpServletRequest.remoteUser}]] </b> <i
 							class="fa fa-caret-down"></i>
 
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li class="dropdown-submenu"><a tabindex="-1" href="#">Pendencias</a>
+							<li class="dropdown-submenu"><a tabindex="-1" href="#">Publicar</a>
 								<ul class="dropdown-menu">
-									<li><a tabindex="-1" href="/pendingUsers">Usuários</a></li>
-									<li><a tabindex="-1" href="/pendingPlants">Plantas
-											Medicinais</a></li>
-									<li><a tabindex="-1" href="/pendingParks">Parques</a></li>
+									<li><a tabindex="-1" href="/espec/plantsPublish">Planta Medicinal</a></li>
 								</ul></li>
 							<li><a href="#">Meu perfil</a></li>
-							<li><a href="#">Relatórios</a></li>
 							<li class="divider"></li>
 							<li><form th:action="@{/app-logout}" method="POST">
 									<input class="btn btn-link" type="submit" value="Sair"
@@ -58,6 +54,7 @@
 								</form></li>
 						</ul></li>
 				</ul>
+
 			</div>
 		</nav>
 	</div>
@@ -67,7 +64,7 @@
 			<div class="alignTexto">
 
 				<div class="form-group col-md-8">
-					<p style="font-size: 23px">Parques</p>
+					<p style="font-size: 23px">Plantas Medicinais e Fitoterapia</p>
 				</div>
 				<form method="get" action="/search">
 					<div class="col-lg-4">
@@ -83,24 +80,31 @@
 				<hr style="width: 100%"></hr>
 
 				<div class="form-group col-md-12">
-					<h4>Parques</h4>
+					<h4>O que são plantas medicinais?</h4>
 				</div>
 
 				<div class="form-row" style="margin-top: 2%">
 					<div class="form-group col-md-8">
-						<p class="text-justify">O projeto BioTalk oferece uma área
-							exclusiva com cadastros de parques disponíveis para pesquisa.</p>
-						<p class="text-justify">A finalidade dessa base de parques é
-							voltada para incentivar a troca de informações sobre exposições,
-							eventos, viveiros e outras possibilidades que os parques possam
-							oferecer que tenham relação às plantas como um todo.</p>
+						<p class="text-justify">Historicamente o uso de plantas faz
+							parte da vida da humanidade. O homem, para ampliar seu
+							conhecimento, usou desde a sua pré-história, a intuição e
+							analogia, fazendo assim, um caminho sábio para descobrir a
+							utilidade de cada planta.</p>
+						<p class="text-justify">As plantas medicinais são todas
+							aquelas que possuem princípios ativos que ajudam no tratamento
+							das doenças podendo levar até mesmo a sua cura. Elas são
+							utilizadas sob a forma de chás ou infusões que devem ser
+							ingeridos diariamente, enquanto durar o tratamento, mas é preciso
+							ter cuidado ao consumi-las, pois algumas delas podem ser tóxicas.</p>
 						</p>
-						<p class="text-justify">Nos preocupamos em mostrar as
-							possibilidades para encontrar determinadas plantas em
-							determinadas regiões.</p>
+						<p class="text-justify">As plantas medicinais servem para
+							complementar o tratamento de diversas doenças mas não devem ser
+							utilizadas sem o conhecimento do médico pois podem ocasionar
+							alguma interação medicamentosa e interferir no processo de cura
+							da doença.</p>
 					</div>
 					<div class="form-group col-md-4">
-						<img src="../images/parksHome.jpg" class="rounded float-right"
+						<img src="../images/plantsHome.jpg" class="rounded float-right"
 							alt="..." style="width: 100%; height: 100%" />
 						<div class="card-body">
 							<p class="card-text" style="font-size: 13px">Fitoterapia e o
@@ -110,16 +114,31 @@
 				</div>
 
 				<div class="form-group col-md-12">
-					<h4>Sugestões</h4>
+					<h4>O que é fitoterapia?</h4>
 				</div>
 
-				<div class="card" style="width: 18rem;">
-					<img class="card-img-top" src="../images/parqueDoCarmo.jpg"
-						alt="Card image cap">
-					<div class="card-body">
-						<p class="card-text">O bosque tem cerca de 6 mil árvores,
-							entre cerejeiras e eucaliptos, lagos naturais e diversas espécies
-							de animais.</p>
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<p class="text-justify">Fitoterapia é a prevenção e o
+							tratamento de doenças mediante o uso de plantas (Ferreira,
+							1999).  Phyton, em grego, quer dizer “planta” e therapeia vem do
+							verbo therapeuo, que significa “tratar, cuidar”. Segundo a
+							Portaria 971, de 03/05/2006, do Ministério da Saúde, a
+							fitoterapia é uma terapêutica caracterizada pelo uso de plantas
+							medicinais em suas diferentes formas farmacêuticas, sem a
+							utilização de substâncias ativas isoladas, ainda que de origem
+							vegetal. A fitoterapia constitui uma forma de terapia medicinal
+							que vem crescendo notadamente desde o começo do século XXI
+							(Panizza 2010).</p>
+						<p class="text-sm">Até agora, são 31 iniciativas de arranjo
+							produtivo local, 44 de assistência farmacêutica e três de
+							desenvolvimento e registro sanitário de medicamentos
+							fitoterápicos da Relação Nacional de Medicamentos (Rename) por
+							laboratórios oficiais públicos (Portal Brasil, 2016).</p>
+					</div>
+					<div class="form-group">
+						<p>Todo medicamento, inclusive os fitoterápicos, deve ser
+							usado segundo orientação médica.</p>
 					</div>
 				</div>
 			</div>

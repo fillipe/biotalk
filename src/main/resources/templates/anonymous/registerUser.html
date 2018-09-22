@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
 <title>BioTalk | UMC</title>
@@ -11,9 +12,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 <script src="js/checkFields.js"></script>
-<!-- <script src="js/registerUser.js"></script> -->
 </head>
 
 <body class="background">
@@ -26,13 +28,12 @@
 		<nav class="navbar bordasMenu fundoMenu">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="/homepage"><font color="black">Home</font></a></li>
-					<li><a href="/plantsHome"><font color="black">Plantas
+					<li><a href="/anonymous/homepage"><font color="black">Home</font></a></li>
+					<li><a href="/anonymous/plantsHome"><font color="black">Plantas
 								Medicinais</font></a></li>
-					<li><a href="/parksHome"><font color="black">Parques</font></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/login"><span
+					<li><a href="/anonymous/login"><span
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</ul>
 			</div>
@@ -54,7 +55,7 @@
 					<p style="font-size: 20; color: #006400;">Usuário cadastrado com sucesso!</p>
 				</div>
 
-				<form method="post" action="#" th:action="@{/registerUser}"
+				<form method="post" action="#" th:action="@{/anonymous/registerUser}"
 					class="form" name="form" id="form">
 
 					<div class="form-group">

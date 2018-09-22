@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+<title>BioTalk | UMC</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<script src="js/plantsPublish.js"></script>
+</head>
+
+<body class="background">
+
+	<div class="text-center">
+		<img src="../images/logo.png" class="rounded"></img>
+	</div>
+
+	<div class="align container" style="z-index: 1;">
+		<nav class="navbar bordasMenu fundoMenu" style="z-index: 2;">
+			<div class="container-fluid" style="z-index: 3;">
+				<ul class="nav navbar-nav">
+					<li><a href="/espec/homepage"><font color="black">Home</font></a></li>
+					<li><a href="/espec/plantsHome"><font color="black">Plantas
+								Medicinais</font></a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown" style="z-index: 4;"><a
+						class="dropdown-toggle" data-toggle="dropdown" href="#"> <b
+							th:inline="text" class="user"> Olá,
+								[[${#httpServletRequest.remoteUser}]] </b> <i
+							class="fa fa-caret-down"></i>
+
+					</a>
+						<ul class="dropdown-menu" role="menu">
+							<li class="dropdown-submenu"><a tabindex="-1" href="#">Publicar</a>
+								<ul class="dropdown-menu">
+									<li><a tabindex="-1" href="#">Planta Medicinal</a></li>
+								</ul></li>
+							<li><a href="#">Meu perfil</a></li>
+							<li class="divider"></li>
+							<li><form th:action="@{/app-logout}" method="POST">
+									<input class="btn btn-link" type="submit" value="Sair"
+										style="margin-left: 6%" />
+								</form></li>
+						</ul></li>
+				</ul>
+
+			</div>
+		</nav>
+	</div>
+
+	<div class="container">
+		<div class=" fundoTexto bordas">
+			<div class="alignTexto">
+
+				<form method="post" action="#" th:action="@{/espec/plantsPublish}"
+					class="form" name="form" id="form">
+
+					<h3 style="margin-top: 0.75%">Cadastro de Plantas com
+						Propriedades Medicinais</h3>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputText">Nome Científico *</label> <label
+								id="lblNameScientific" style="color: red; font-size: smaller;"></label>
+							<input type="text" class="form-control" id="inputNameScien"
+								placeholder="Nome Científico"
+								th:field="*{medicinalPlants.scientificName}" />
+						</div>
+						<div class="form-group col-md-6">
+							<label for="inputText">Nome Popular *</label> <label
+								id="lblNamePopular" style="color: red; font-size: smaller;"></label>
+							<input type="text" class="form-control" id="inputPopName"
+								placeholder="Nome Popular"
+								th:field="*{medicinalPlants.otherName}" required />
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputState">Espécie *</label> <label id="lblSpecie"
+								style="color: red; font-size: smaller;"></label> <select
+								id="inputSpecie" class="form-control"
+								th:field="*{medicinalPlants.species}" required>
+								<option value="" selected>Escolha...</option>
+								<option value="Briófitas">Briófitas</option>
+								<option value="Pteridófitas">Pteridófitas</option>
+								<option value="Angiospermas">Angiospermas</option>
+								<option value="Gimnospermas">Gimnospermas</option>
+							</select>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="inputState">Grupo *</label> <label id="lblGroup"
+								style="color: red; font-size: smaller;"></label> <select
+								id="inputGroup" class="form-control"
+								th:field="*{medicinalPlants.group}" required>
+								<option value="" selected>Escolha...</option>
+								<option value="Criptógamas">Criptógamas</option>
+								<option value="Fanerógamas">Fanerógamas</option>
+								<option value="Briófitas">Briófitas</option>
+								<option value="Pteridófitas">Pteridófitas</option>
+								<option value="Angiospermas">Angiospermas</option>
+								<option value="Gimnospermas">Gimnospermas</option>
+							</select>
+						</div>
+					</div>
+
+					<h4 style="margin-left: 1.5%">Localização geográfica
+						predominante</h4>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputState">Estado *</label> <label id="lblState"
+								style="color: red; font-size: smaller;"></label> <select
+								id="inputState" class="form-control"
+								th:field="*{medicinalPlants.state}" required>
+								<option value="" selected>Escolha...</option>
+								<option value="AC">AC</option>
+								<option value="AL">AL</option>
+								<option value="AP">AP</option>
+								<option value="AM">AM</option>
+								<option value="BA">BA</option>
+								<option value="CE">CE</option>
+								<option value="DF">DF</option>
+								<option value="ES">ES</option>
+								<option value="GO">GO</option>
+								<option value="MA">MA</option>
+								<option value="MT">MT</option>
+								<option value="MS">MS</option>
+								<option value="MG">MG</option>
+								<option value="PA">PA</option>
+								<option value="PB">PB</option>
+								<option value="PR">PR</option>
+								<option value="PE">PE</option>
+								<option value="PI">PI</option>
+								<option value="RJ">RJ</option>
+								<option value="RN">RN</option>
+								<option value="RS">RS</option>
+								<option value="RO">RO</option>
+								<option value="RR">RR</option>
+								<option value="SC">SC</option>
+								<option value="SP">SP</option>
+								<option value="SE">SE</option>
+								<option value="TO">TO</option>
+							</select>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="inputRegion">Região *</label> <label id="lblRegion"
+								style="color: red; font-size: smaller;"></label> <select
+								id="inputRegion" class="form-control"
+								th:field="*{medicinalPlants.region}" required>
+								<option value="" selected>Escolha...</option>
+								<option value="AC">Norte</option>
+								<option value="AL">Sul</option>
+								<option value="AP">Leste</option>
+								<option value="AM">Oeste</option>
+								<option value="AM">Sudeste</option>
+								<option value="AM">Sudoeste</option>
+								<option value="AM">Nordeste</option>
+								<option value="AM">Noroeste</option>
+							</select>
+						</div>
+					</div>
+
+					<h4 style="margin-left: 1.5%">Uso</h4>
+
+					<div class="form-group col-md-4">
+						<label for="inputIdication">Indicações *</label> <label
+							id="lblIndication" style="color: red; font-size: smaller;"></label>
+						<select id="inputIdication" class="form-control"
+							th:field="*{medicinalIndication.medicinalIndicationId}" required>
+							<option value="" selected>Escolha...</option>
+							<option value="1">Dor de cabeça</option>
+							<option value="2">Dor de barriga</option>
+							<option value="3">Dor de estômago</option>
+							<option value="4">Tosse</option>
+						</select>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="inputIdication">Indicação </label> <select
+							id="inputIdication2" class="form-control">
+							<option value="" selected>Escolha...</option>
+							<option value="1">Dor de cabeça</option>
+							<option value="2">Dor de barriga</option>
+							<option value="3">Dor de estômago</option>
+							<option value="4">Tosse</option>
+						</select>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="inputIdication">Indicação </label> <select
+							id="inputIdication3" class="form-control">
+							<option value="" selected>Escolha...</option>
+							<option value="1">Dor de cabeça</option>
+							<option value="2">Dor de barriga</option>
+							<option value="3">Dor de estômago</option>
+							<option value="4">Tosse</option>
+						</select>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="inputIdication">Contraindicação *</label> <label
+							id="lblContraindication" style="color: red; font-size: smaller;"></label>
+						<select id="inputContraindication" class="form-control"
+							th:field="*{medicalContraindication.medicinalContraindicationId}">
+							<option value="" selected>Escolha...</option>
+							<option value="1">Grávidas</option>
+							<option value="2">Diabéticos</option>
+						</select>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="inputIdication">Contraindicação</label> <select
+							id="inputContraindication2" class="form-control">
+							<option value="" selected>Escolha...</option>
+							<option value="1">Grávidas</option>
+							<option value="2">Diabéticos</option>
+						</select>
+					</div>
+
+					<div class="form-group col-md-4">
+						<label for="inputIdication">Contraindicação</label> <select
+							id="inputContraindication3" class="form-control">
+							<option value="" selected>Escolha...</option>
+							<option value="1">Grávidas</option>
+							<option value="2">Diabéticos</option>
+						</select>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="FormControlTextarea1">Descrição *</label> <label
+								id="lblDescription" style="color: red; font-size: smaller;"></label>
+							<textarea class="form-control" id="inputTextAreaDescription"
+								rows="5" th:field="*{medicinalPlants.plantDescription}"></textarea>
+						</div>
+					</div>
+
+					<h4 style="margin-left: 1.5%">Parques associados</h4>
+
+					<div class="form-row">
+						<div class="form-group col-md-12">
+
+							<label for="inputText">Parque 1 </label> <input type="text"
+								class="form-control" id="inputPark1" placeholder="Nome Parque"
+								th:field="*{medicinalPlants.parkOne}" /> <label for="inputText">Parque
+								2 </label> <input type="text" class="form-control" id="inputPark2"
+								placeholder="Nome Parque" th:field="*{medicinalPlants.parkTwo}" />
+
+							<label for="inputText">Parque 3 </label> <input type="text"
+								class="form-control" id="inputPark2" placeholder="Nome Parque"
+								th:field="*{medicinalPlants.parkTree}" />
+
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="inputText">Anexar imagem</label><label id="lblImage"
+								style="color: red; font-size: smaller;"> </label> <input
+								type="file" name="arquivo" th:field="*{picPlants.plantPhoto}"
+								id="inputImage" />
+						</div>
+					</div>
+
+					<div class="form-group" style="margin-left: 91%">
+						<button type="button" onClick="validateAndSubmitForm()"
+							class="btn btn-primary">Cadastrar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<br></br>
+	</div>
+	
+	<br />
+	<div>
+		<div class="container footer bordas">
+			<div class="faleConosco col-sm-4">
+				<strong>Fale conosco</strong> <br /> <strong>Bio-Talk
+					Project</strong><br /> <strong>Telefone:</strong> (11) 94193-3411 <br /> <strong>E-mail:</strong>
+				biotalkproject@gmail.com
+			</div>
+			<div class="col-sm-4">
+				<img src="../images/umc_logo.png" class="imagemSize"></img>
+			</div>
+			<div class="col-sm-4">
+				<h4 class="redesSociais">
+					<strong>Siga-nos</strong>
+				</h4>
+				<br></br> <a href="#" class="fa fa-facebook"></a> <a href="#"
+					class="fa fa-twitter"></a>
+			</div>
+		</div>
+	</div>
+	<br />
+</body>
+
+</html>

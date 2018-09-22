@@ -17,6 +17,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsServiceImp userDetailsService;
+	
+	@Autowired
+	private LoginSuccessHandler loginSuccessHandler;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -28,12 +31,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-		.antMatchers("/**").permitAll()
-		.antMatchers("/auth/**").hasAnyRole()
+		.antMatchers("/anonymous/**").permitAll()
+//		.antMatchers("/auth/**").hasAnyRole()
+		.antMatchers("/comum/**").hasRole("COMUM")
+		.antMatchers("/espec/**").hasRole("ESPEC")
 		.antMatchers("/admin/**").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().formLogin()
-		.loginPage("/login").defaultSuccessUrl("/auth/homepage")
+		.loginPage("/login").successHandler(loginSuccessHandler)
 		.failureUrl("/login?error=true")
 		.and().logout()
 		.logoutSuccessUrl("/login")

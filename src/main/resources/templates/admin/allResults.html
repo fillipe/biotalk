@@ -27,10 +27,9 @@
 		<nav class="navbar bordasMenu fundoMenu" style="z-index: 2;">
 			<div class="container-fluid" style="z-index: 3;">
 				<ul class="nav navbar-nav">
-					<li><a href="auth/homepage"><font color="black">Home</font></a></li>
-					<li><a href="auth/plantsHome"><font color="black">Plantas
+					<li><a href="/admin/homepage"><font color="black">Home</font></a></li>
+					<li><a href="/admin/plantsHome"><font color="black">Plantas
 								Medicinais</font></a></li>
-					<li><a href="auth/parksHome"><font color="black">Parques</font></a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -44,10 +43,9 @@
 						<ul class="dropdown-menu" role="menu">
 							<li class="dropdown-submenu"><a tabindex="-1" href="#">Pendencias</a>
 								<ul class="dropdown-menu">
-									<li><a tabindex="-1" href="/pendingUsers">Usuários</a></li>
-									<li><a tabindex="-1" href="/pendingPlants">Plantas
+									<li><a tabindex="-1" href="/admin/pendingUsers">Usuários</a></li>
+									<li><a tabindex="-1" href="/admin/pendingPlants">Plantas
 											Medicinais</a></li>
-									<li><a tabindex="-1" href="/pendingParks">Parques</a></li>
 								</ul></li>
 							<li><a href="#">Meu perfil</a></li>
 							<li><a href="#">Relatórios</a></li>
@@ -63,14 +61,14 @@
 		</nav>
 	</div>
 
-	<div class="container" style="z-index: 1;">
+	<div class="container">
 		<div class="fundoTexto bordas">
 			<div class="alignTexto">
 
 				<div class="form-group col-md-8">
-					<p style="font-size: 23px">Plantas Medicinais Pendentes</p>
+					<p style="font-size: 23px">Resultados da sua busca:</p>
 				</div>
-				<form method="get" action="/searchAdmin">
+				<form method="get" action="/search">
 					<div class="col-lg-4">
 						<div class="input-group">
 							<input type="text" th:name="value" class="form-control"
@@ -87,22 +85,23 @@
 					<thead class="thead-light">
 						<tr>
 							<th scope="col">Id</th>
-							<th scope="col">nome do parque</th>
-							<th scope="col">#</th>
-							<th scope="col">#</th>
+							<th scope="col">nome cientifico</th>
+							<th scope="col">nome popular</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="parks : ${parksList}">
-							<td><span class="txtReturn" th:text="${parks.parksId}"></span></td>
-							<td><span class="txtReturn" th:text="${parks.parksName}"></span></td>
-							<td><span class="txtReturn">x</span></td>
-							<td><span class="txtReturn">autor</span></td>
-							<!-- 								<td><a th:href="#">view</a></td> -->
+						<tr th:each="medicinalPlants : ${medicinalPlantsList}">
+							<td><span class="txtReturn"
+								th:text="${medicinalPlants.plantsId}">A</span></td>
+							<td><span class="txtReturn"
+								th:text="${medicinalPlants.scientificName}"></span></td>
+							<td><span class="txtReturn"
+								th:text="${medicinalPlants.species}"></span></td>
+							<td><a
+								th:href="@{/valuePlantsById/{id}(id=${medicinalPlants.plantsId})}">view</a></td>
 						</tr>
 					</tbody>
 				</table>
-
 			</div>
 			<br></br>
 		</div>

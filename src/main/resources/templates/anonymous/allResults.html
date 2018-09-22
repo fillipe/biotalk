@@ -1,7 +1,6 @@
-<!doctype html>
-<html>
-<meta http-equiv="Content-Language" content="pt-br"></meta>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
 <title>BioTalk | UMC</title>
@@ -17,26 +16,26 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
+
 <body class="background">
 
 	<div class="text-center">
-		<img src="../images/logo.png" class="rounded" alt="..."></img>
+		<img src="../images/logo.png" class="rounded"></img>
 	</div>
 
 	<div class="align container ">
 		<nav class="navbar bordasMenu fundoMenu">
 			<div class="container-fluid ">
 				<ul class="nav navbar-nav">
-					<li><a href="/homepage"><font color="black">Home</font></a></li>
-					<li><a href="/plantsHome"><font color="black">Plantas
+					<li><a href="/anonymous/homepage"><font color="black">Home</font></a></li>
+					<li><a href="/anonymous/plantsHome"><font color="black">Plantas
 								Medicinais</font></a></li>
-					<li><a href="#"><font color="black">Parques</font></a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/registerUser"><span
+					<li><a href="/anonymous/registerUser"><span
 							class="glyphicon glyphicon-user"></span> Cadastre-se</a></li>
-					<li><a href="/login"><span
+					<li><a href="/anonymous/login"><span
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</ul>
 			</div>
@@ -48,7 +47,7 @@
 			<div class="alignTexto">
 
 				<div class="form-group col-md-8">
-					<p style="font-size: 23px">Parques</p>
+					<p style="font-size: 23px">Resultados da sua busca:</p>
 				</div>
 				<form method="get" action="/search">
 					<div class="col-lg-4">
@@ -63,53 +62,40 @@
 
 				<hr style="width: 100%"></hr>
 
-				<div class="form-group col-md-12">
-					<h4>Parques</h4>
-				</div>
-
-				<div class="form-row" style="margin-top: 2%">
-					<div class="form-group col-md-8">
-						<p class="text-justify">O projeto BioTalk oferece uma área
-							exclusiva com cadastros de parques disponíveis para pesquisa.</p>
-						<p class="text-justify">A finalidade dessa base de parques é
-							voltada para incentivar a troca de informações sobre exposições,
-							eventos, viveiros e outras possibilidades que os parques possam
-							oferecer que tenham relação às plantas como um todo.</p>
-						</p>
-						<p class="text-justify">Nos preocupamos em mostrar as
-							possibilidades para encontrar determinadas plantas em
-							determinadas regiões.</p>
-					</div>
-					<div class="form-group col-md-4">
-						<img src="../images/parksHome.jpg" class="rounded float-right"
-							alt="..." style="width: 100%; height: 100%" />
-						<div class="card-body">
-							<p class="card-text" style="font-size: 13px">Fitoterapia e o
-								uso das plantas com propriedades medicinais</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group col-md-12">
-					<h4>Sugestões</h4>
-				</div>
-
-				<div class="card" style="width: 18rem;">
-					<img class="card-img-top" src="../images/parqueDoCarmo.jpg"
-						alt="Card image cap">
-					<div class="card-body">
-						<p class="card-text">O bosque tem cerca de 6 mil árvores,
-							entre cerejeiras e eucaliptos, lagos naturais e diversas espécies
-							de animais.</p>
-					</div>
-				</div>
+				<table class="table">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">nome cientifico</th>
+							<th scope="col">nome popular</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="medicinalPlants : ${medicinalPlantsList}">
+							<td><span class="txtReturn"
+								th:text="${medicinalPlants.plantsId}">A</span></td>
+							<td><span class="txtReturn"
+								th:text="${medicinalPlants.scientificName}"></span></td>
+							<td><span class="txtReturn"
+								th:text="${medicinalPlants.species}"></span></td>
+							<td><a
+								th:href="@{/valuePlantsById/{id}(id=${medicinalPlants.plantsId})}">view</a></td>
+						</tr>
+						<tr th:each="parks : ${parksNameList}">
+							<td><span class="txtReturn" th:text="${parks.parksId}">A</span></td>
+							<td><span class="txtReturn" th:text="${parks.parksName}"></span></td>
+							<td><span class="txtReturn"></span></td>
+							<td><a
+								th:href="@{/valueParksById/{id}(id=${parks.parksId})}">view</a></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
+			<br></br>
 		</div>
-		<br></br>
 	</div>
 
 	<br />
-
 	<div>
 		<div class="container footer bordas">
 			<div class="faleConosco col-sm-4">
@@ -131,4 +117,5 @@
 	</div>
 	<br />
 </body>
+
 </html>

@@ -10,7 +10,7 @@ function validateAndSubmitForm() {
 				function(ifExists) {
 					if (ifExists) {
 						window.location.href = window.origin
-								+ '/registerUser?error=true';
+								+ '/anonymous/registerUser?error=true';
 					} else {
 						document.getElementById("form").submit();
 					}

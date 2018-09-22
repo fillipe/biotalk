@@ -6,14 +6,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PlantsHomeController {
 
-	@GetMapping("/plantsHome")
+	@GetMapping("/anonymous/plantsHome")
 	public String returnPlantHome() {
 		return "anonymous/plantsHome";
 	}
 	
-	@GetMapping("auth/plantsHome")
-	public String returnPlantHomeAuth() {
-		return "auth/plantsHome";
+	@GetMapping("/comum/plantsHome")
+	public String returnPlantHomeComum() {
+		return "comum/plantsHome";
+	}
+	
+	@GetMapping("/espec/plantsHome")
+	public String returnPlantHomeEspec() {
+		return "espec/plantsHome";
+	}
+	
+	@GetMapping("/admin/plantsHome")
+	public String returnPlantHomeAdmin() {
+		return "admin/plantsHome";
 	}
 	
 }

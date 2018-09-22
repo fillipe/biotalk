@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
 	
-	@GetMapping("/login")
+	@GetMapping("/anonymous/login")
 	public String returnLogin() {
 		return "anonymous/login";
 	}
 	
-	@GetMapping("auth/homepage")
-	public String returnHomePage() {
-		return "authenticated/homepage";
-	}
+//	@GetMapping("auth/homepage")
+//	public String returnHomePage() {
+//		return "authenticated/homepage";
+//	}
 	
 	@PostMapping("app-logout")
 	public String returnLogout() {

@@ -21,7 +21,7 @@ import com.biotalk.biotalk.service.LoginService;
 import com.biotalk.biotalk.service.UserService;
 
 @Controller
-@RequestMapping("/registerUser")
+@RequestMapping("/anonymous/registerUser")
 public class RegisterUserController {
 	
 	@Autowired
@@ -51,7 +51,7 @@ public class RegisterUserController {
 	public String save(User user, Login login, Authorities auth, Formation formation, BindingResult result) {
 
 		if(result.hasErrors()) {
-			return "redirect:/registerUser";
+			return "redirect:/anonymous/registerUser";
 		} 
 		
 		try {
@@ -75,7 +75,7 @@ public class RegisterUserController {
 			System.out.println("Erro ao cadastrar usuário - " + e);
 		}
 
-		return "redirect:/registerUser?success=true";
+		return "redirect:/anonymous/registerUser?success=true";
 
 	}
 
