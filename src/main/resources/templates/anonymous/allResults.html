@@ -81,13 +81,6 @@
 							<td><a
 								th:href="@{/valuePlantsById/{id}(id=${medicinalPlants.plantsId})}">view</a></td>
 						</tr>
-						<tr th:each="parks : ${parksNameList}">
-							<td><span class="txtReturn" th:text="${parks.parksId}">A</span></td>
-							<td><span class="txtReturn" th:text="${parks.parksName}"></span></td>
-							<td><span class="txtReturn"></span></td>
-							<td><a
-								th:href="@{/valueParksById/{id}(id=${parks.parksId})}">view</a></td>
-						</tr>
 					</tbody>
 				</table>
 			</div>

@@ -14,14 +14,14 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-<script src="js/plantsPublish.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{../css/style.css}" />
+<script th:src="@{../js/plantsPublish.js}"></script>
 </head>
 
 <body class="background">
 
 	<div class="text-center">
-		<img src="../images/logo.png" class="rounded"></img>
+		<img th:src="@{../images/logo.png}" class="rounded"></img>
 	</div>
 
 	<div class="align container" style="z-index: 1;">
@@ -68,6 +68,15 @@
 
 					<h3 style="margin-top: 0.75%">Cadastro de Plantas com
 						Propriedades Medicinais</h3>
+
+					<div align="center" th:if="${param.error}">
+						<p style="font-size: 20; color: #FF1C19;">Falha ao realizar cadastro!</p>
+					</div>
+
+					<div align="center" th:if="${param.success}">
+						<p style="font-size: 20; color: #006400;">Cadastro realizado
+							com sucesso!</p>
+					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-6">
@@ -249,24 +258,6 @@
 						</div>
 					</div>
 
-					<h4 style="margin-left: 1.5%">Parques associados</h4>
-
-					<div class="form-row">
-						<div class="form-group col-md-12">
-
-							<label for="inputText">Parque 1 </label> <input type="text"
-								class="form-control" id="inputPark1" placeholder="Nome Parque"
-								th:field="*{medicinalPlants.parkOne}" /> <label for="inputText">Parque
-								2 </label> <input type="text" class="form-control" id="inputPark2"
-								placeholder="Nome Parque" th:field="*{medicinalPlants.parkTwo}" />
-
-							<label for="inputText">Parque 3 </label> <input type="text"
-								class="form-control" id="inputPark2" placeholder="Nome Parque"
-								th:field="*{medicinalPlants.parkTree}" />
-
-						</div>
-					</div>
-
 					<div class="form-row">
 						<div class="form-group col-md-12">
 							<label for="inputText">Anexar imagem</label><label id="lblImage"
@@ -285,7 +276,7 @@
 		</div>
 		<br></br>
 	</div>
-	
+
 	<br />
 	<div>
 		<div class="container footer bordas">
@@ -295,7 +286,7 @@
 				biotalkproject@gmail.com
 			</div>
 			<div class="col-sm-4">
-				<img src="../images/umc_logo.png" class="imagemSize"></img>
+				<img th:src="@{../images/umc_logo.png}" class="imagemSize"></img>
 			</div>
 			<div class="col-sm-4">
 				<h4 class="redesSociais">

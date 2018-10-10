@@ -1,30 +1,36 @@
 package com.biotalk.biotalk.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_medicial_contraindication")
 public class MedicalContraindication {
-	
+
 	@Id
 	@Column(name = "medicinal_contraindication_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer medicinalContraindicationId;
-	
+
 	@Column(name = "contraindication")
 	private String contraindication;
-	
-	@OneToMany(mappedBy = "medicalContraindication", cascade = CascadeType.ALL)
-    private Set<MedicinalPlants> medicinalPlants;
+
+	// @OneToMany(mappedBy = "medicalContraindication", cascade =
+	// CascadeType.ALL)
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE }, mappedBy = "medicalContraindication")
+	private Set<MedicinalPlants> medicinalPlants = new HashSet<>();
 
 	public Integer getMedicinalContraindicationId() {
 		return medicinalContraindicationId;
@@ -49,5 +55,5 @@ public class MedicalContraindication {
 	public void setMedicinalPlants(Set<MedicinalPlants> medicinalPlants) {
 		this.medicinalPlants = medicinalPlants;
 	}
-	
+
 }

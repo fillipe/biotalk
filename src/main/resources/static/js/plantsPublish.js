@@ -1,7 +1,6 @@
 function validateAndSubmitForm() {
 
 	if (checkFields()) {
-		alert("Planta cadastrada com sucesso!");
 		document.getElementById("form").submit();
 	}
 }
@@ -72,7 +71,7 @@ function checkFields() {
 	}
 
 	if (document.form.inputTextAreaDescription.value.trim() !== "") {
-		if (document.formPlants.inputTextAreaDescription.value.length < 10) {
+		if (document.form.inputTextAreaDescription.value.length < 10) {
 			$('#lblDescription').text("Mínimo de 10 caracteres!");
 			return false;
 		} 

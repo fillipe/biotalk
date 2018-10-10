@@ -14,14 +14,14 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-<script src="js/checkFields.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{../css/style.css}" />
+<script th:src="@{../js/checkFields.js}" ></script>
 </head>
 
 <body class="background">
 
 	<div class="text-center">
-		<img src="../images/logo.png" class="rounded"></img>
+		<img th:src="@{/images/logo.png}" class="rounded"></img>
 	</div>
 
 	<div class="align container">
@@ -215,7 +215,7 @@
 				biotalkproject@gmail.com
 			</div>
 			<div class="col-sm-4">
-				<img src="../images/umc_logo.png" class="imagemSize"></img>
+				<img th:src="@{../images/umc_logo.png}" class="imagemSize"></img>
 			</div>
 			<div class="col-sm-4">
 				<h4 class="redesSociais">

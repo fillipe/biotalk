@@ -1,6 +1,8 @@
 package com.biotalk.biotalk.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,18 +13,23 @@ import com.biotalk.biotalk.model.MedicalContraindication;
 import com.biotalk.biotalk.model.MedicinalIndication;
 import com.biotalk.biotalk.model.MedicinalPlants;
 import com.biotalk.biotalk.model.PicPlants;
+import com.biotalk.biotalk.model.User;
 import com.biotalk.biotalk.service.MedicinalPlantsService;
 import com.biotalk.biotalk.service.PicPlantsService;
+import com.biotalk.biotalk.service.UserService;
 
 @Controller
-public class MedicinalPlantsPublish {
-	
+public class MedicinalPlantsPublishController {
+
 	@Autowired
 	private MedicinalPlantsService medicinalPlantsService;
-	
+
 	@Autowired
 	private PicPlantsService picPlantsService;
-	
+
+	@Autowired
+	private UserService userService;
+
 	@GetMapping(value = { "/espec/plantsPublish" })
 	public ModelAndView plantsPublish() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -42,21 +49,22 @@ public class MedicinalPlantsPublish {
 	public String save(MedicinalPlants medicinalPlants, MedicinalIndication medicinalIndication,
 			MedicalContraindication medicalContraindication, PicPlants picPlants) {
 
-		try {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-			medicinalPlants.setMedicinalIndication(medicinalIndication);
-			medicinalPlants.setMedicalContraindication(medicalContraindication);
-			medicinalPlants.setPicPlants(picPlants);
-			medicinalPlants.setStatus(Status.PENDING);
-			// medicinalPlants.setUser();
-			medicinalPlantsService.saveMedicinalPlants(medicinalPlants);
-			picPlantsService.savePlants(picPlants);
+		User user = userService.findUserByIdLogin(authentication.getName());
 
-		} catch (Exception e) {
-			System.out.println("Erro ao cadastrar planta medicinal - " + e);
-		}
+		//TODO @ManyToMany salvar
+//		medicinalPlants.setMedicinalIndication(medicinalIndication);
+//		medicinalPlants.setMedicalContraindication(medicalContraindication);
+		medicinalPlants.setPicPlants(picPlants);
+		medicinalPlants.setStatus(Status.PENDING);
+		medicinalPlants.setUser(user);
 
-		return "redirect:/espec/homepage";
+		medicinalPlantsService.saveMedicinalPlants(medicinalPlants);
+		picPlants.setMedicinalPlants(medicinalPlants);
+		picPlantsService.savePlants(picPlants);
+
+		return "redirect:/espec/plantsPublish?success=true";
 
 	}
 
