@@ -1,11 +1,18 @@
 package com.biotalk.biotalk.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biotalk.biotalk.enums.Status;
@@ -33,10 +40,13 @@ public class MedicinalPlantsPublishController {
 	@GetMapping(value = { "/espec/plantsPublish" })
 	public ModelAndView plantsPublish() {
 		ModelAndView modelAndView = new ModelAndView();
+		
+		Set<MedicinalIndication> listIndication = new HashSet<>();
+		Set<MedicinalIndication> listContraindication = new HashSet<>();
 
 		modelAndView.addObject(new MedicinalPlants());
-		modelAndView.addObject(new MedicinalIndication());
-		modelAndView.addObject(new MedicalContraindication());
+		modelAndView.addObject(listIndication);
+		modelAndView.addObject(listContraindication);
 		modelAndView.addObject(new PicPlants());
 
 		modelAndView.setViewName("espec/plantsPublish");
@@ -46,16 +56,16 @@ public class MedicinalPlantsPublishController {
 	}
 
 	@PostMapping(value = { "/espec/plantsPublish" })
-	public String save(MedicinalPlants medicinalPlants, MedicinalIndication medicinalIndication,
-			MedicalContraindication medicalContraindication, PicPlants picPlants) {
+	public String save(MedicinalPlants medicinalPlants, Set<MedicinalIndication> medicinalIndication,
+			Set<MedicalContraindication> medicalContraindication, PicPlants picPlants) {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 		User user = userService.findUserByIdLogin(authentication.getName());
 
 		//TODO @ManyToMany salvar
-//		medicinalPlants.setMedicinalIndication(medicinalIndication);
-//		medicinalPlants.setMedicalContraindication(medicalContraindication);
+		medicinalPlants.setMedicinalIndication(medicinalIndication);
+		medicinalPlants.setMedicalContraindication(medicalContraindication);
 		medicinalPlants.setPicPlants(picPlants);
 		medicinalPlants.setStatus(Status.PENDING);
 		medicinalPlants.setUser(user);
@@ -67,5 +77,5 @@ public class MedicinalPlantsPublishController {
 		return "redirect:/espec/plantsPublish?success=true";
 
 	}
-
+	
 }

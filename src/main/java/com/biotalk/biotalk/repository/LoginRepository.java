@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.biotalk.biotalk.model.Login;
 
 @Repository("loginRepository")
-public interface LoginRepository extends JpaRepository<Login, Long> {
+public interface LoginRepository extends JpaRepository<Login, Integer> {
 	
 	Login findByEmail(String email);
 	

@@ -70,7 +70,8 @@
 						Propriedades Medicinais</h3>
 
 					<div align="center" th:if="${param.error}">
-						<p style="font-size: 20; color: #FF1C19;">Falha ao realizar cadastro!</p>
+						<p style="font-size: 20; color: #FF1C19;">Falha ao realizar
+							cadastro!</p>
 					</div>
 
 					<div align="center" th:if="${param.success}">
@@ -185,69 +186,33 @@
 
 					<h4 style="margin-left: 1.5%">Uso</h4>
 
-					<div class="form-group col-md-4">
-						<label for="inputIdication">Indicações *</label> <label
-							id="lblIndication" style="color: red; font-size: smaller;"></label>
-						<select id="inputIdication" class="form-control"
-							th:field="*{medicinalIndication.medicinalIndicationId}" required>
-							<option value="" selected>Escolha...</option>
-							<option value="1">Dor de cabeça</option>
-							<option value="2">Dor de barriga</option>
-							<option value="3">Dor de estômago</option>
-							<option value="4">Tosse</option>
-						</select>
-					</div>
+					<!-- 					<div class="form-group col-md-4"> -->
+					<!-- 						<label for="inputIdication">Indicações *</label> <label -->
+					<!-- 							id="lblIndication" style="color: red; font-size: smaller;"></label> -->
+					<!-- 						<select id="inputIdication" class="form-control" -->
+					<!-- 							th:field="*{medicinalIndication.medicinalIndicationId}" required> -->
+					<!-- 							<option value="" selected>Escolha...</option> -->
+					<!-- 							<option value="1">Dor de cabeça</option> -->
+					<!-- 							<option value="2">Dor de barriga</option> -->
+					<!-- 							<option value="3">Dor de estômago</option> -->
+					<!-- 							<option value="4">Tosse</option> -->
+					<!-- 						</select> -->
+					<!-- 					</div> -->
 
-					<div class="form-group col-md-4">
-						<label for="inputIdication">Indicação </label> <select
-							id="inputIdication2" class="form-control">
-							<option value="" selected>Escolha...</option>
-							<option value="1">Dor de cabeça</option>
-							<option value="2">Dor de barriga</option>
-							<option value="3">Dor de estômago</option>
-							<option value="4">Tosse</option>
-						</select>
-					</div>
-
-					<div class="form-group col-md-4">
-						<label for="inputIdication">Indicação </label> <select
-							id="inputIdication3" class="form-control">
-							<option value="" selected>Escolha...</option>
-							<option value="1">Dor de cabeça</option>
-							<option value="2">Dor de barriga</option>
-							<option value="3">Dor de estômago</option>
-							<option value="4">Tosse</option>
-						</select>
-					</div>
-
-					<div class="form-group col-md-4">
-						<label for="inputIdication">Contraindicação *</label> <label
-							id="lblContraindication" style="color: red; font-size: smaller;"></label>
-						<select id="inputContraindication" class="form-control"
-							th:field="*{medicalContraindication.medicinalContraindicationId}">
-							<option value="" selected>Escolha...</option>
-							<option value="1">Grávidas</option>
-							<option value="2">Diabéticos</option>
-						</select>
-					</div>
-
-					<div class="form-group col-md-4">
-						<label for="inputIdication">Contraindicação</label> <select
-							id="inputContraindication2" class="form-control">
-							<option value="" selected>Escolha...</option>
-							<option value="1">Grávidas</option>
-							<option value="2">Diabéticos</option>
-						</select>
-					</div>
-
-					<div class="form-group col-md-4">
-						<label for="inputIdication">Contraindicação</label> <select
-							id="inputContraindication3" class="form-control">
-							<option value="" selected>Escolha...</option>
-							<option value="1">Grávidas</option>
-							<option value="2">Diabéticos</option>
-						</select>
-					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Indicação</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="indicacao, itemStat : ${medicinalIndication}">
+								<td><input hidden
+									th:name="|medicinalIndication[${itemStat.index}].indication|"
+									th:value="${indicacao.getIndication()}" /></td>
+							</tr>
+						</tbody>
+					</table>
 
 					<div class="form-row">
 						<div class="form-group col-md-12">

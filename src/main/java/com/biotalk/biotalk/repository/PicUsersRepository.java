@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.biotalk.biotalk.model.PicPlants;
 
 @Repository(value = "picUsersRepository")
-public interface PicUsersRepository extends JpaRepository<PicPlants, Long>, CrudRepository<PicPlants, Long>{
+public interface PicUsersRepository extends JpaRepository<PicPlants, Integer>, CrudRepository<PicPlants, Integer>{
 
 }

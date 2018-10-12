@@ -1,19 +1,16 @@
 package com.biotalk.biotalk.model;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -56,19 +53,25 @@ public class MedicinalPlants {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	// @ManyToOne
-	// @JoinColumn(name = "medicinal_indication_id")
+	// @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
+	// CascadeType.MERGE })
+	// @JoinTable(name = "plants_indication", joinColumns = { @JoinColumn(name =
+	// "plant_id") }, inverseJoinColumns = {
+	// @JoinColumn(name = "medicinal_indication_id") })
+	// private Set<MedicinalIndication> medicinalIndication = new HashSet<>();
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "plants_indication", joinColumns = { @JoinColumn(name = "plant_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "medicinal_indication_id") })
-	private Set<MedicinalIndication> medicinalIndication = new HashSet<>();
+	@OneToMany(mappedBy = "medicinalPlants", cascade = CascadeType.ALL)
+	private Set<MedicinalIndication> medicinalIndication;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "plants_contraindication", joinColumns = {
-			@JoinColumn(name = "plant_id") }, inverseJoinColumns = {
-					@JoinColumn(name = "medicinal_contraindication_id") })
-	private Set<MedicalContraindication> medicalContraindication = new HashSet<>();
+	// @ManyToMany(cascade = { CascadeType.ALL })
+	// @JoinTable(name = "plants_contraindication", joinColumns = {
+	// @JoinColumn(name = "plant_id") }, inverseJoinColumns = {
+	// @JoinColumn(name = "medicinal_contraindication_id") })
+	// private Set<MedicalContraindication> medicalContraindication = new
+	// HashSet<>();
+
+	@OneToMany(mappedBy = "medicinalPlants", cascade = CascadeType.ALL)
+	private Set<MedicalContraindication> medicalContraindication;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pic_plant_id")

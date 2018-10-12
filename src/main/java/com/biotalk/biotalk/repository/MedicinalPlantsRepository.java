@@ -12,13 +12,13 @@ import com.biotalk.biotalk.enums.Status;
 import com.biotalk.biotalk.model.MedicinalPlants;
 
 @Repository("medicinalPlantsRepository")
-public interface MedicinalPlantsRepository extends JpaRepository<MedicinalPlants, Long>, CrudRepository<MedicinalPlants, Long> {
+public interface MedicinalPlantsRepository extends JpaRepository<MedicinalPlants, Integer>, CrudRepository<MedicinalPlants, Integer> {
 	
 	List<MedicinalPlants> findByStatus(Status status);
 	
 	@Query("SELECT mp "
 			+ "FROM MedicinalPlants mp, MedicinalIndication mi "
-			+ "WHERE mp.medicinalIndication = mi.medicinalIndicationId "
+			+ "WHERE mp.plantsId = mi.medicinalPlants "
 			+ "and (upper(mp.scientificName) like upper(:value) "
 			+ "or upper(mp.otherName) like upper(:value) "
 			+ "or upper(mi.indication) like upper(:value)) "

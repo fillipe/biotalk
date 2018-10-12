@@ -1,17 +1,12 @@
 package com.biotalk.biotalk.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,11 +21,17 @@ public class MedicinalIndication {
 	@Column(name = "indication")
 	private String indication;
 
-//	@OneToMany(mappedBy = "medicinalIndication", cascade = CascadeType.ALL)
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST,
-			CascadeType.MERGE }, mappedBy = "medicinalIndication")
-	private Set<MedicinalPlants> medicinalPlants = new HashSet<>();
+//	@ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {
+//                CascadeType.PERSIST,
+//                CascadeType.MERGE
+//            }, mappedBy = "medicinalIndication")
+//	private Set<MedicinalPlants> medicinalPlants = new HashSet<>();
+	
+	@ManyToOne
+	@JoinColumn(name = "plant_id")
+	private MedicinalPlants medicinalPlants;
 
 	public Integer getMedicinalIndicationId() {
 		return medicinalIndicationId;
@@ -48,11 +49,11 @@ public class MedicinalIndication {
 		this.indication = indication;
 	}
 
-	public Set<MedicinalPlants> getMedicinalPlants() {
+	public MedicinalPlants getMedicinalPlants() {
 		return medicinalPlants;
 	}
 
-	public void setMedicinalPlants(Set<MedicinalPlants> medicinalPlants) {
+	public void setMedicinalPlants(MedicinalPlants medicinalPlants) {
 		this.medicinalPlants = medicinalPlants;
 	}
 

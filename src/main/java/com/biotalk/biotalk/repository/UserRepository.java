@@ -12,7 +12,7 @@ import com.biotalk.biotalk.enums.Status;
 import com.biotalk.biotalk.model.User;
 
 @Repository("userRepository")
-public interface UserRepository extends JpaRepository<User, Long>, CrudRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer>, CrudRepository<User, Integer> {
 
 	User findByCpf(String cpf);
 

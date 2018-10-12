@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.biotalk.biotalk.model.Formation;
 
 @Repository("formationRepository")
-public interface FormationRepository extends JpaRepository<Formation, Long>, CrudRepository<Formation, Long> {
+public interface FormationRepository extends JpaRepository<Formation, Integer>, CrudRepository<Formation, Integer> {
 
 }
