@@ -143,29 +143,9 @@ function checkAuthorities() {
 		$('#profile').css("border", "1px solid #F00");
 		return false;
 	} else {
-		if (authority != "3") {
-			if (document.form.academicDegree.value.trim() == ''
-					&& document.form.course.value.trim() == ''
-					&& document.form.institution.value.trim() == '') {
-				$('#lblAcademicDegree')
-						.text(
-								"Formação acadêmica necessária para esse tipo de perfil!");
-				$('#academicDegree').css("border", "1px solid #F00");
-				$('#course').css("border", "1px solid #F00");
-				$('#institution').css("border", "1px solid #F00");
-				$('#profile').css("border", "1px solid #F00");
-				return false;
-
-			}
-		}
-
-		$('#lblAcademicDegree').text("");
-		$('#academicDegree').css("border", "1px solid");
-		$('#course').css("border", "1px solid");
-		$('#institution').css("border", "1px solid");
-		$('#profile').css("border", "1px solid #228B22");
+		$('#lblProfile').text("");
+		$('#profile').css("border", "1px solid");
 		return true;
-
 	}
 }
 
@@ -210,18 +190,26 @@ function checkInstitution() {
 	instituicao = document.form.institution.value;
 	profile = document.form.authority.value;
 
-	if (profile !== 3 && grau.trim() !== '' && curso.trim() !== ''
-			&& instituicao.trim() !== '') {
-		$('#lblAcademicDegree').text(
-				"Formação acadêmica necessária para esse tipo de perfil!");
+	if (profile !== 3 && grau.trim() === '') {
+		$('#lblAcademicDegree').text("Formação acadêmica necessária para esse tipo de perfil!");
 		$('#academicDegree').css("border", "1px solid #F00");
-		$('#course').css("border", "1px solid #F00");
-		$('#institution').css("border", "1px solid #F00");
-		$('#profile').css("border", "1px solid #F00");
 		return false;
 	}
+	if (profile !== 3 && curso.trim() === '') {
+		$('#lblCourse').text("Curso necessário para esse tipo de perfil!");
+		$('#course').css("border", "1px solid #F00");
+		return false;
+	}
+	if (profile !== 3 && instituicao.trim() === '') {
+		$('#lblInstitution').text("Instituição necessária para esse tipo de perfil!");
+		$('#institution').css("border", "1px solid #F00");
+		return false;
+	}
+	
 	$('#lblAcademicDegree').text("");
-	$('#inputAcademicDegree').css("border", "1px solid #228B22");
+	$('#lblCourse').text("");
+	$('#lblInstitution').text("");
+	$('#academicDegree').css("border", "1px solid #228B22");
 	$('#course').css("border", "1px solid #228B22");
 	$('#institution').css("border", "1px solid #228B22");
 	$('#profile').css("border", "1px solid #228B22");

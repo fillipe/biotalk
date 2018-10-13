@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -32,6 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.authorizeRequests()
 		.antMatchers("/anonymous/**").permitAll()
+		.antMatchers("/css/**", "/images/**", "/js/**").permitAll()
+		.antMatchers("/api/user/verifyByCpf/**").permitAll()
 //		.antMatchers("/auth/**").hasAnyRole()
 		.antMatchers("/comum/**").hasRole("COMUM")
 		.antMatchers("/espec/**").hasRole("ESPEC")
@@ -48,10 +49,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**");
-	}
+//	@Override
+//	public void configure(WebSecurity web) throws Exception {
+//		web.ignoring().antMatchers("/resources/**", "/static/**", "/images**");
+//	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
