@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
 	
-	@GetMapping("/anonymous/login")
+	@GetMapping("/login")
 	public String returnLogin() {
-		return "anonymous/login";
+		return "login";
 	}
 	
 //	@GetMapping("auth/homepage")
@@ -19,7 +19,7 @@ public class LoginController {
 	
 	@PostMapping("app-logout")
 	public String returnLogout() {
-		return "anonymous/login";
+		return "login";
 	}
 	
 	@GetMapping("app/error")

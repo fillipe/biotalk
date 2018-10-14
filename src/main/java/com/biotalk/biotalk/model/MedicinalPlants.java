@@ -1,5 +1,6 @@
 package com.biotalk.biotalk.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -61,7 +61,7 @@ public class MedicinalPlants {
 	// private Set<MedicinalIndication> medicinalIndication = new HashSet<>();
 
 	@OneToMany(mappedBy = "medicinalPlants", cascade = CascadeType.ALL)
-	private Set<MedicinalIndication> medicinalIndication;
+	private List<MedicinalIndication> medicinalIndication;
 
 	// @ManyToMany(cascade = { CascadeType.ALL })
 	// @JoinTable(name = "plants_contraindication", joinColumns = {
@@ -157,14 +157,14 @@ public class MedicinalPlants {
 		this.user = user;
 	}
 
-	public Set<MedicinalIndication> getMedicinalIndication() {
+	public List<MedicinalIndication> getMedicinalIndication() {
 		return medicinalIndication;
 	}
 
-	public void setMedicinalIndication(Set<MedicinalIndication> medicinalIndication) {
+	public void setMedicinalIndication(List<MedicinalIndication> medicinalIndication) {
 		this.medicinalIndication = medicinalIndication;
 	}
-
+	
 	public Set<MedicalContraindication> getMedicalContraindication() {
 		return medicalContraindication;
 	}

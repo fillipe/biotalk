@@ -63,8 +63,8 @@
 		<div class=" fundoTexto bordas">
 			<div class="alignTexto">
 
-				<form method="post" action="#" th:action="@{/espec/plantsPublish}"
-					class="form" name="form" id="form">
+				<form method="post" action="#" th:object="${medicinalPlants}" th:action="@{/espec/plantsPublish}"
+					class="form" name="form" id="form" onsubmit="return validateAndSubmitForm()">
 
 					<h3 style="margin-top: 0.75%">Cadastro de Plantas com
 						Propriedades Medicinais</h3>
@@ -85,14 +85,14 @@
 								id="lblNameScientific" style="color: red; font-size: smaller;"></label>
 							<input type="text" class="form-control" id="inputNameScien"
 								placeholder="Nome Científico"
-								th:field="*{medicinalPlants.scientificName}" />
+								th:field="*{scientificName}" />
 						</div>
 						<div class="form-group col-md-6">
 							<label for="inputText">Nome Popular *</label> <label
 								id="lblNamePopular" style="color: red; font-size: smaller;"></label>
 							<input type="text" class="form-control" id="inputPopName"
 								placeholder="Nome Popular"
-								th:field="*{medicinalPlants.otherName}" required />
+								th:field="*{otherName}" required />
 						</div>
 					</div>
 
@@ -101,7 +101,7 @@
 							<label for="inputState">Espécie *</label> <label id="lblSpecie"
 								style="color: red; font-size: smaller;"></label> <select
 								id="inputSpecie" class="form-control"
-								th:field="*{medicinalPlants.species}" required>
+								th:field="*{species}" required>
 								<option value="" selected>Escolha...</option>
 								<option value="Briófitas">Briófitas</option>
 								<option value="Pteridófitas">Pteridófitas</option>
@@ -114,7 +114,7 @@
 							<label for="inputState">Grupo *</label> <label id="lblGroup"
 								style="color: red; font-size: smaller;"></label> <select
 								id="inputGroup" class="form-control"
-								th:field="*{medicinalPlants.group}" required>
+								th:field="*{group}" required>
 								<option value="" selected>Escolha...</option>
 								<option value="Criptógamas">Criptógamas</option>
 								<option value="Fanerógamas">Fanerógamas</option>
@@ -134,7 +134,7 @@
 							<label for="inputState">Estado *</label> <label id="lblState"
 								style="color: red; font-size: smaller;"></label> <select
 								id="inputState" class="form-control"
-								th:field="*{medicinalPlants.state}" required>
+								th:field="*{state}" required>
 								<option value="" selected>Escolha...</option>
 								<option value="AC">AC</option>
 								<option value="AL">AL</option>
@@ -170,7 +170,7 @@
 							<label for="inputRegion">Região *</label> <label id="lblRegion"
 								style="color: red; font-size: smaller;"></label> <select
 								id="inputRegion" class="form-control"
-								th:field="*{medicinalPlants.region}" required>
+								th:field="*{region}" required>
 								<option value="" selected>Escolha...</option>
 								<option value="AC">Norte</option>
 								<option value="AL">Sul</option>
@@ -198,28 +198,23 @@
 					<!-- 							<option value="4">Tosse</option> -->
 					<!-- 						</select> -->
 					<!-- 					</div> -->
-
-					<table>
-						<thead>
-							<tr>
-								<th>Indicação</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="indicacao, itemStat : ${medicinalIndication}">
-								<td><input hidden
-									th:name="|medicinalIndication[${itemStat.index}].indication|"
-									th:value="${indicacao.getIndication()}" /></td>
-							</tr>
-						</tbody>
-					</table>
+					
+					<div id="indications" class="form-row">
+						<label for="lblIndications">Indicações</label>
+				        <div class="form-group col-md-12" th:each="indicacao,rowStat : ${medicinalPlants.medicinalIndication}">
+				            <label th:for="${medicinalPlants.medicinalIndication[__${rowStat.index}__].indication}">Indicação</label>
+				            <input th:field="${medicinalPlants.medicinalIndication[__${rowStat.index}__].indication}">
+				            <button type="button" name="removeItem" th:value="${rowStat.index}">Remove item</button>
+				        </div>
+				    	<button type="button" name="addItem">Add item</button>
+					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-12">
 							<label for="FormControlTextarea1">Descrição *</label> <label
 								id="lblDescription" style="color: red; font-size: smaller;"></label>
 							<textarea class="form-control" id="inputTextAreaDescription"
-								rows="5" th:field="*{medicinalPlants.plantDescription}"></textarea>
+								rows="5" th:field="*{plantDescription}"></textarea>
 						</div>
 					</div>
 
@@ -233,8 +228,7 @@
 					</div>
 
 					<div class="form-group" style="margin-left: 91%">
-						<button type="button" onClick="validateAndSubmitForm()"
-							class="btn btn-primary">Cadastrar</button>
+						<input type="submit" class="btn btn-primary" name="save" value="Cadastrar">
 					</div>
 				</form>
 			</div>

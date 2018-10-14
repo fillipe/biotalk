@@ -30,22 +30,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-		.antMatchers("/anonymous/**").permitAll()
-		.antMatchers("/css/**", "/images/**", "/js/**").permitAll()
-		.antMatchers("/api/user/verifyByCpf/**").permitAll()
-//		.antMatchers("/auth/**").hasAnyRole()
-		.antMatchers("/comum/**").hasRole("COMUM")
-		.antMatchers("/espec/**").hasRole("ESPEC")
-		.antMatchers("/admin/**").hasRole("ADMIN")
-		.anyRequest().authenticated()
-		.and().formLogin()
-		.loginPage("/login").successHandler(loginSuccessHandler)
-		.failureUrl("/login?error=true")
-		.and().logout()
-		.logoutSuccessUrl("/login")
-		.and().exceptionHandling() //exception handling configuration
-		.accessDeniedPage("/app/error")
-		.and().csrf().disable();
+			.antMatchers("/anonymous/**").permitAll()
+			.antMatchers("/css/**", "/images/**", "/js/**").permitAll()
+			.antMatchers("/api/user/verifyByCpf/**").permitAll()
+//			.antMatchers("/auth/**").hasAnyRole()
+			.antMatchers("/comum/**").hasRole("COMUM")
+			.antMatchers("/espec/**").hasRole("ESPEC")
+			.antMatchers("/admin/**").hasRole("ADMIN")
+			.anyRequest().authenticated()
+			.and()
+		.formLogin()
+			.loginPage("/login").successHandler(loginSuccessHandler)
+			.permitAll()
+			.and()
+		.logout()
+			.logoutSuccessUrl("/login")
+			.and()
+		.exceptionHandling() //exception handling configuration
+			.accessDeniedPage("/app/error")
+			.and()
+		.csrf()
+			.disable();
 	}
 	
 
